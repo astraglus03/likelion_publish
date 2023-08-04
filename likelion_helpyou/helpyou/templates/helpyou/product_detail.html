@@ -3,244 +3,331 @@
 {% load mathfilters %}
 
     {% block css_area %}
-      <link href="{% static 'helpyou/css/product_detail.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'helpyou/css/product_detail.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'helpyou/css/category.css' %}" rel="stylesheet" type="text/css">
     {% endblock %}
 
 
     {% block main_area %}
 
-    <div class="container">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/" style="text-decoration: none;">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">과일</li></li>
-              <li class="breadcrumb-item active" aria-current="page">사과</li>
-            </ol>
-          </nav>
+    <nav style="--bs-breadcrumb-divider: '>'; margin-left: 50px;" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/" style="text-decoration: none;">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">과일</li></li>
+            <li class="breadcrumb-item active" aria-current="page">사과</li>
+        </ol>
+    </nav>
 
         <div class="row">
-            <div class="col-2" id="row-row">   
-                <div class="flex-shrink-0 p-3 bg-white" style="width: auto;" id="category-title">
-                    <a href="Category.html" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#"/></svg>
-                      <span class="fs-5 fw-semibold">카테고리</span>
-                    </a>
-                    <ul class="list-unstyled ps-0">
-              <!-- 세금 대주제 -->
-              <li class="mb-1">
-                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false" id="largecate">과일</button>
-                <div class="collapse" id="home-collapse">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4">
-                    <!-- 중주제 -->
-                    <li>
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-kookmin-subtopics" aria-expanded="false" id="sub-kookmin-subtopics">국민은행</button>
-                      <div class="collapse" id="sub-kookmin-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-kookmin-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex rounded">뱅킹</a></li>
+            <div class="col-2">
+
+                <div class="flex-shrink-0 p-3 bg-white" id="category-title">
+                  <a
+            {#            href="Category.html"#}
+                    class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom"
+                  >
+                    <svg class="bi pe-none me-2" width="30" height="24">
+            {#              <use xlink:href="#" />#}
+                    </svg>
+                    <span class="fs-5 fw-semibold">카테고리</span>
+                  </a>
+                  <ul class="list-unstyled ps-0">
+                    <!-- 과일 대주제 -->
+                    <li class="mb-1">
+                      <button
+                        class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#home-collapse-fruit"
+                        aria-expanded="false"
+                        id="largecate"
+                      >
+                        과일
+                      </button>
+                      <div class="collapse" id="home-collapse-fruit">
+                        <ul
+                          class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4"
+                        >
+                          <!-- 중주제 -->
+                          <li>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-kookmin-subtopics"
+                                aria-expanded="false"
+                                id="sub-kookmin-subtopics"
+                              >
+                                사과
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-nh-subtopics"
+                                aria-expanded="false"
+                                id="sub-nh-subtopics"
+                              >
+                                감귤/만감류
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-woori-subtopics"
+                                aria-expanded="false"
+                                id="sub-woori-subtopics"
+                              >
+                                오렌지/자몽/레몬
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-hana-subtopics"
+                                aria-expanded="false"
+                                id="sub-hana-subtopics"
+                              >
+                                토마토
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-ibk-subtopics"
+                                aria-expanded="false"
+                                id="sub-ibk-subtopics"
+                              >
+                                수박/멜론/참외
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-shinhan-subtopics"
+                                aria-expanded="false"
+                                id="sub-shinhan-subtopics"
+                              >
+                                포도
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-sc-subtopics"
+                                aria-expanded="false"
+                                id="sub-sc-subtopics"
+                              >
+                                딸기
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-keb-subtopics"
+                                aria-expanded="false"
+                                id="sub-keb-subtopics"
+                              >
+                                과일세트/바구니
+                              </button>
+                            </div>
+                          </li>
                         </ul>
                       </div>
-                    </div>
-        
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-nh-subtopics" aria-expanded="false"   id="sub-nh-subtopics">NH농협은행</button>
-                      <div class="collapse" id="sub-nh-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-nh-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                    </li>
+                    <!-- 쌀 대주제 -->
+                    <li class="mb-1">
+                      <button
+                        class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#home-collapse-rice"
+                        aria-expanded="false"
+                        id="largecate"
+                      >
+                        쌀/잡곡
+                      </button>
+                      <div class="collapse" id="home-collapse-rice">
+                        <ul
+                          class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4"
+                        >
+                          <!-- 중주제 -->
+                          <li>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-kookmin-subtopics"
+                                aria-expanded="false"
+                                id="sub-kookmin-subtopics"
+                              >
+                                백미
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-nh-subtopics"
+                                aria-expanded="false"
+                                id="sub-nh-subtopics"
+                              >
+                                찹쌀
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-woori-subtopics"
+                                aria-expanded="false"
+                                id="sub-woori-subtopics"
+                              >
+                                현미/흑미
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-hana-subtopics"
+                                aria-expanded="false"
+                                id="sub-hana-subtopics"
+                              >
+                                혼합곡
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-ibk-subtopics"
+                                aria-expanded="false"
+                                id="sub-ibk-subtopics"
+                              >
+                                수입잡곡
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-shinhan-subtopics"
+                                aria-expanded="false"
+                                id="sub-shinhan-subtopics"
+                              >
+                                수수/조/깨
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-sc-subtopics"
+                                aria-expanded="false"
+                                id="sub-sc-subtopics"
+                              >
+                                콩/팥
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-keb-subtopics"
+                                aria-expanded="false"
+                                id="sub-keb-subtopics"
+                              >
+                                보리/귀리
+                              </button>
+                            </div>
+                          </li>
                         </ul>
                       </div>
-                    </div>
-        
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-woori-subtopics" aria-expanded="false" id="sub-woori-subtopics">우리은행</button>
-                      <div class="collapse" id="sub-woori-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-woori-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                    </li>
+                    <!-- 정육 대주제 -->
+                    <li class="mb-1">
+                      <button
+                        class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#home-collapse-meat"
+                        aria-expanded="false"
+                        id="largecate"
+                      >
+                        정육/계란
+                      </button>
+                      <div class="collapse" id="home-collapse-meat">
+                        <ul
+                          class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4"
+                        >
+                          <!-- 중주제 -->
+                          <li>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-kookmin-subtopics"
+                                aria-expanded="false"
+                                id="sub-kookmin-subtopics"
+                              >
+                                돼지고기
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-nh-subtopics"
+                                aria-expanded="false"
+                                id="sub-nh-subtopics"
+                              >
+                                소고기
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-woori-subtopics"
+                                aria-expanded="false"
+                                id="sub-woori-subtopics"
+                              >
+                                닭고기
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#sub-hana-subtopics"
+                                aria-expanded="false"
+                                id="sub-hana-subtopics"
+                              >
+                                계란
+                              </button>
+                            </div>
+                          </li>
                         </ul>
                       </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-hana-subtopics" aria-expanded="false" id="sub-hana-subtopics">하나은행</button>
-                      <div class="collapse" id="sub-hana-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-hana-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-ibk-subtopics" aria-expanded="false"  id="sub-ibk-subtopics">IBK기업은행</button>
-                      <div class="collapse" id="sub-ibk-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-ibk-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-shinhan-subtopics" aria-expanded="false" id="sub-shinhan-subtopics">신한은행</button>
-                      <div class="collapse" id="sub-shinhan-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-shinhan-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-sc-subtopics" aria-expanded="false" id="sub-sc-subtopics">SC제일은행</button>
-                      <div class="collapse" id="sub-sc-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-sc-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-keb-subtopics" aria-expanded="false" id="sub-keb-subtopics">KEB외환은행</button>
-                      <div class="collapse" id="sub-keb-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-keb-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-city-subtopics" aria-expanded="false" id="sub-city-subtopics">시티은행</button>
-                      <div class="collapse" id="sub-city-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-city-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-suhyup-subtopics" aria-expanded="false" id="sub-suhyup-subtopics">수협은행</button>
-                      <div class="collapse" id="sub-suhyup-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-suhyup-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-daegu-subtopics" aria-expanded="false" id="sub-daegu-subtopics">대구은행</button>
-                      <div class="collapse" id="sub-daegu-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-daegu-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-busan-subtopics" aria-expanded="false" id="sub-busan-subtopics">부산은행</button>
-                      <div class="collapse" id="sub-busan-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-busan-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-gwhangu-subtopics" aria-expanded="false" id="sub-gwhangu-subtopics">광주은행</button>
-                      <div class="collapse" id="sub-gwhangu-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-gwhangu-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-jeju-subtopics" aria-expanded="false" id="sub-jeju-subtopics">제주은행</button>
-                      <div class="collapse" id="sub-jeju-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-jeju-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                      <div>
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-jeonbuk-subtopics" aria-expanded="false" id="sub-jeonbuk-subtopics">전북은행</button>
-                      <div class="collapse" id="sub-jeonbuk-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-jeonbuk-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <div>           
-                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-kyungnam-subtopics" aria-expanded="false" id="sub-kyungnam-subtopics">경남은행</button>
-                      <div class="collapse" id="sub-kyungnam-subtopics">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-kyungnam-subtopics">
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
-                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
-                        </ul>
-                      </div>
-                    </div>
                     </li>
                   </ul>
                 </div>
-              </li>
-                    </ul>
-                </div>  
-                </div>
+            </div>
 
             <div class="col-5" id="product-image">
 
                 <div class="main-image-container">
-                    <img src="https://loremflickr.com/408/350/dog" alt="">
+                    <img src="{{ product.main_image.url }}" alt="{{ product.name }} main image" width="408px" height="500px">
                 </div>
                 <div class="sub-image-container">
-                    <div><img src="https://loremflickr.com/110/140/turtle" alt=""></div>
-                    <div><img src="https://loremflickr.com/110/140/mouse" alt=""></div>
-                    <div style="margin-right: 0;"><img src="https://loremflickr.com/110/140/cat" alt=""></div>
+                    <div><img src="{{ product.sub_image1.url }}" alt="{{ product.name }}" width="100" height="140"></div>
+                    <div><img src="{{ product.sub_image2.url }}" alt="{{ product.name }}" width="100" height="140"></div>
+                    <div style="margin-right: 0;"><img src="{{ product.sub_image3.url }}" alt="{{ product.name }}" width="100" height="140"></div>
                 </div>
             </div>
 
@@ -313,7 +400,7 @@
                     </div>
                     <div class="keep-cart-container">
                         <span>
-                            <button type="button" onclick="location.href='/cart/'">장바구니</button>
+                            <button type="button" onclick="location.href='/cart/1'">장바구니</button>
                         </span>
                     </div>
             </div>

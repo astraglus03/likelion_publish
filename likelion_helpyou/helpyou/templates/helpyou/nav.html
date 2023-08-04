@@ -24,6 +24,9 @@
     crossorigin="anonymous"
   ></script>
     <link href="{% static 'helpyou/css/nav.css' %}" rel="stylesheet" type="text/css">
+    <script defer src ="{% static 'helpyou/js/mypage.js' %}"></script>
+        <!-- jQuery 가져오기 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -91,6 +94,35 @@
             </div>
         </nav>
     </div>
+
+
+<script>
+    $("#dropdownMenuButton1").hover(function () {
+    $("#dropdownMenuButton2, #dropdownMenuButton3").attr("aria-expanded", "false");
+    $("#dropdownMenuButton2, #dropdownMenuButton3").next().removeClass("show");
+    $(this).attr("aria-expanded", "true");
+    $(this).next().addClass("show");
+});
+$("#dropdownMenuButton2").hover(function () {
+    $("#dropdownMenuButton1, #dropdownMenuButton3").attr("aria-expanded", "false");
+    $("#dropdownMenuButton1, #dropdownMenuButton3").next().removeClass("show");
+    $(this).attr("aria-expanded", "true");
+    $(this).next().addClass("show");
+});
+$("#dropdownMenuButton3").hover(function () {
+    $("#dropdownMenuButton1, #dropdownMenuButton2").attr("aria-expanded", "false");
+    $("#dropdownMenuButton1, #dropdownMenuButton2").next().removeClass("show");
+    $(this).attr("aria-expanded", "true");
+    $(this).next().addClass("show");
+});
+
+$(document).ready(function() {
+  $(document).on("click", function(event) {
+    $("#dropdownMenuButton1, #dropdownMenuButton2, #dropdownMenuButton3").attr("aria-expanded", "false");
+    $("#dropdownMenuButton1, #dropdownMenuButton2, #dropdownMenuButton3").next().removeClass("show");
+  });
+});
+</script>
 </body>
 
 </html>

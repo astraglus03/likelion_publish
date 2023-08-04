@@ -1,6 +1,7 @@
 {% extends 'helpyou/base.html' %}
 {%  load static %}
 
+
     {% block css_area %}
       <link href="{% static 'helpyou/css/index.css' %}" rel="stylesheet" type="text/css">
     {% endblock %}
@@ -8,13 +9,6 @@
 
     {% block main_area %}
 
-        <!-- 메인 배너 -->
-    <div class="main_banner">
-        <div class="top">
-            <p>사진...</p>
-        </div>
-    </div>
-    <div class="all">
     <!-- 메인 리스트 -->
     <div class="main_list"></div>
         <div class="list_name">
@@ -23,163 +17,155 @@
             </div>
         </div>
         <div class="products col4">
-            <li>
-                <div class="img_wrap">
-                    <span>
-                        <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">
-                    </span>
-                </div>
-                <div class="item_info">
-                    <a class="click" href="categorydetail.html">
-                        <div class="space1"></div>
-                        <span class="name">
-                            개 맛도리 사과 6~8입(봉)
-                        </span>
-                    </a>
-                    <div class="space2">
-                        <span class="price">
-                            11,900원
-                        </span>
-                        <span class="price_detail">
-                            (1BAG 당 7,990원)
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">
-                <div class="item_info">
-                    <a class="click" href="categorydetail.html">
-                        <div class="space1"></div>
-                        <span class="name">
-                            개 맛도리 사과 6~8입(봉)
-                        </span>
-                    </a>
-                    <div class="space2">
-                        <span class="price">
-                            11,900원
-                        </span>
-                        <span class="price_detail">
-                            (1BAG 당 7,990원)
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">
-                <div class="item_info">
-                    <a class="click" href="categorydetail.html">
-                        <div class="space1"></div>
-                        <span class="name">
-                            개 맛도리 사과 6~8입(봉)
-                        </span>
-                    </a>
-                    <div class="space2">
-                        <span class="price">
-                            11,900원
-                        </span>
-                        <span class="price_detail">
-                            (1BAG 당 7,990원)
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">
-                <div class="item_info">
-                    <a class="click" href="categorydetail.html">
-                        <div class="space1"></div>
-                        <span class="name">
-                            개 맛도리 사과 6~8입(봉)
-                        </span>
-                    </a>
-                    <div class="space2">
-                        <span class="price">
-                            11,900원
-                        </span>
-                        <span class="price_detail">
-                            (1BAG 당 7,990원)
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">
-                <div class="item_info">
-                    <a class="click" href="categorydetail.html">
-                        <div class="space1"></div>
-                        <span class="name">
-                            개 맛도리 사과 6~8입(봉)
-                        </span>
-                    </a>
-                    <div class="space2">
-                        <span class="price">
-                            11,900원
-                        </span>
-                        <span class="price_detail">
-                            (1BAG 당 7,990원)
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">
-                <div class="item_info">
-                    <a class="click" href="categorydetail.html">
-                        <div class="space1"></div>
-                        <span class="name">
-                            개 맛도리 사과 6~8입(봉)
-                        </span>
-                    </a>
-                    <div class="space2">
-                        <span class="price">
-                            11,900원
-                        </span>
-                        <span class="price_detail">
-                            (1BAG 당 7,990원)
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">
-                <div class="item_info">
-                    <a class="click" href="categorydetail.html">
-                        <div class="space1"></div>
-                        <span class="name">
-                            개 맛도리 사과 6~8입(봉)
-                        </span>
-                    </a>
-                    <div class="space2">
-                        <span class="price">
-                            11,900원
-                        </span>
-                        <span class="price_detail">
-                            (1BAG 당 7,990원)
-                        </span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">
-                <div class="item_info">
-                    <a class="click" href="categorydetail.html">
-                        <div class="space1"></div>
-                        <span class="name">
-                            개 맛도리 사과 6~8입(봉)
-                        </span>
-                    </a>
-                    <div class="space2">
-                        <span class="price">
-                            11,900원
-                        </span>
-                        <span class="price_detail">
-                            (1BAG 당 7,990원)
-                        </span>
-                    </div>
-                </div>
-            </li>
+            {% if product_list.exists %}
+                    {% for p in product_list %}
+                        <li>
+                            <div class="img_wrap">
+                                <span>
+                                    <img src="{{ p.main_image.url }}" alt="{{ p.name }}" width="270px" height="270px">
+                                </span>
+                            </div>
+                            <div class="item_info">
+            {#                    <a class="click" href="categorydetail.html">#}
+                                    <div class="space1"></div>
+                                    <span class="name">
+                                        {{ p.name }}
+                                    </span>
+            {#                    </a>#}
+                                <div class="space2">
+                                    <span class="price">
+                                        {{ p.price }}원
+                                    </span>
+                                    <span class="price_detail">
+                                        (1{{ p.unit }} 당 {{ p.price }}원)
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+            {% endif %}
+
+
+{#            <li>#}
+{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
+{#                <div class="item_info">#}
+{#                        <div class="space1"></div>#}
+{#                        <span class="name">#}
+{#                            개 맛도리 사과 6~8입(봉)#}
+{#                        </span>#}
+{#                    <div class="space2">#}
+{#                        <span class="price">#}
+{#                            11,900원#}
+{#                        </span>#}
+{#                        <span class="price_detail">#}
+{#                            (1BAG 당 7,990원)#}
+{#                        </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
+{#                <div class="item_info">#}
+{#                        <div class="space1"></div>#}
+{#                        <span class="name">#}
+{#                            개 맛도리 사과 6~8입(봉)#}
+{#                        </span>#}
+{#                    <div class="space2">#}
+{#                        <span class="price">#}
+{#                            11,900원#}
+{#                        </span>#}
+{#                        <span class="price_detail">#}
+{#                            (1BAG 당 7,990원)#}
+{#                        </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
+{#                <div class="item_info">#}
+{#                        <div class="space1"></div>#}
+{#                        <span class="name">#}
+{#                            개 맛도리 사과 6~8입(봉)#}
+{#                        </span>#}
+{#                    <div class="space2">#}
+{#                        <span class="price">#}
+{#                            11,900원#}
+{#                        </span>#}
+{#                        <span class="price_detail">#}
+{#                            (1BAG 당 7,990원)#}
+{#                        </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
+{#                <div class="item_info">#}
+{#                        <div class="space1"></div>#}
+{#                        <span class="name">#}
+{#                            개 맛도리 사과 6~8입(봉)#}
+{#                        </span>#}
+{#                    <div class="space2">#}
+{#                        <span class="price">#}
+{#                            11,900원#}
+{#                        </span>#}
+{#                        <span class="price_detail">#}
+{#                            (1BAG 당 7,990원)#}
+{#                        </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
+{#                <div class="item_info">#}
+{#                        <div class="space1"></div>#}
+{#                        <span class="name">#}
+{#                            개 맛도리 사과 6~8입(봉)#}
+{#                        </span>#}
+{#                    <div class="space2">#}
+{#                        <span class="price">#}
+{#                            11,900원#}
+{#                        </span>#}
+{#                        <span class="price_detail">#}
+{#                            (1BAG 당 7,990원)#}
+{#                        </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
+{#                <div class="item_info">#}
+{#                        <div class="space1"></div>#}
+{#                        <span class="name">#}
+{#                            개 맛도리 사과 6~8입(봉)#}
+{#                        </span>#}
+{#                    <div class="space2">#}
+{#                        <span class="price">#}
+{#                            11,900원#}
+{#                        </span>#}
+{#                        <span class="price_detail">#}
+{#                            (1BAG 당 7,990원)#}
+{#                        </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li>#}
+{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
+{#                <div class="item_info">#}
+{#                        <div class="space1"></div>#}
+{#                        <span class="name">#}
+{#                            개 맛도리 사과 6~8입(봉)#}
+{#                        </span>#}
+{#                    <div class="space2">#}
+{#                        <span class="price">#}
+{#                            11,900원#}
+{#                        </span>#}
+{#                        <span class="price_detail">#}
+{#                            (1BAG 당 7,990원)#}
+{#                        </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </li>#}
         </div>
-    </div>
+
 
     {% endblock %}

@@ -10,7 +10,7 @@
     {% block main_area %}
 
     <!-- 전체 컨테이너 -->
-    <div class="container">
+
       <div class="payment-title-container">
         <span class="payment-title">주문/결제</span>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -33,7 +33,7 @@
             </div>
               <button type="button" class="edit-pro">상품 수정하기</button>
             </div>
-            <img src="https://loremflickr.com/120/120/cat" alt="" class="pro-image">
+            <img src="{{ product.main_image.url }}" alt="{{ product.name }}" class="pro-image" width="120" height="120">
           </div>
 
           <div class="deliver-info-title-container">
@@ -211,14 +211,14 @@
       </div>
 
       <div class="payment-button">
-        <button type="button" onclick="moveToPaymentFinishPage()">결제하기</button>
+        <button type="button" onclick="location.href='/mypage/{{ product.pk }}'">결제하기</button>
       </div>
 
     </div>
         </div>
       </div> <!-- payment container-->
 
-    </div>
+
 
     {% endblock %}
     <!-- 기능적인 자바스크립트 코드 수정 예정 -->

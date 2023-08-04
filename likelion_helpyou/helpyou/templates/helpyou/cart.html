@@ -8,7 +8,7 @@
 
     {% block main_area %}
 
-  <div class="container">
+
     <div class="cart-title-container">
       <span class="cart-title">장바구니</span>
       <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -107,7 +107,7 @@
                 <div class="check" style="flex: 0;"><input type="checkbox" id="option" class="check-check"></input></div>
                 <div class=" product-option" style="flex: 6; display: flex; flex-direction: row; align-items: center;">
                   <div class="product-image" style="height: auto; width: auto;">
-                      <img src="https://loremflickr.com/100/100/cat" alt=""></img>
+                      <img src="{{ product.main_image.url }}" alt="{{ product.name }}" width="100px" height="100px"></img>
                   </div>
                   <div class="product-image-right">
                   <div class="product-title-container">
@@ -201,7 +201,7 @@
       </div>
 
       <div class="payment-button">
-        <button type="button" onclick="location.href='/payment/1'">주문하기</button>
+        <button type="button" onclick="location.href='/payment/{{ product.pk }}'">주문하기</button>
       </div>
     </div>
 
@@ -218,6 +218,6 @@
         </ul>
       </div>
     </div>
-  </div>
+
 
   {% endblock %}

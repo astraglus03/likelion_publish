@@ -28,8 +28,8 @@ class CategoryBig(models.Model): # unique : 겹치면 안 됨
 
     # allow_unicode = True -> 한글도 가능하게
 
-    def __str__(self):
-       return self.name
+    def __str__(self):  # [번호] 카테고리
+        return f'[{self.pk}]{self.name}'
 
     def get_absolute_url(self):
         return f'/category/{self.slug}/'
@@ -49,8 +49,8 @@ class CategorySmall(models.Model): # 예) 사과
 
     # allow_unicode = True -> 한글도 가능하게
 
-    def __str__(self):
-       return self.name
+    def __str__(self):  # [번호] 카테고리
+        return f'[{self.pk}]{self.categorybig}-{self.name}'
 
     def get_absolute_url(self):
         return f'/category/{self.categorybig}/{self.slug}/'
@@ -90,7 +90,7 @@ class Product(models.Model):
         return f'[{self.pk}][{self.categorybig} - {self.categorysmall}] {self.name}'
 
     def get_absolute_url(self):
-        return f'/category/{self.categorybig.slug}/{self.categorysmall.slug}/{self.name}/' #return f'/helpyou/{self.pk}/'
+        return f'/category/{self.categorybig.slug}/{self.categorysmall.slug}/{self.pk}/' #return f'/helpyou/{self.pk}/'
 
     def cart_url(self):
         return f'/cart/'

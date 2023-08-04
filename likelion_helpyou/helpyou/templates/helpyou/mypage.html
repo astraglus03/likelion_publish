@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Page</title>
-    <link rel="stylesheet" href="mypage.css" />
+{% extends 'helpyou/base.html' %}
+{% load static %}
+{% load mathfilters %}
 
-  </head>
-  <body>
-    <!-- 헤더 -->
-    <div class="header">
-      <iframe src="header.html" width="100%" height="100%"></iframe>
-    </div>
+    {% block css_area %}
+      <link href="{% static 'helpyou/css/mypage.css' %}" rel="stylesheet" type="text/css">
+        <script defer src ="{% static 'helpyou/js/mypage.js' %}"></script>
+    {% endblock %}
+
+
+    {% block main_area %}
 
     <!-- 전체 틀 -->
     <div class="container">
@@ -26,7 +22,7 @@
               <a href="#" onclick="showOrderInfo()"> 주문/배송 조회 </a>
             </li>
             <li>
-              <a href="cancel.html"> 취소/반품/교환 조회 </a>
+              취소/반품/교환 조회
             </li>
           </ul>
         </div>
@@ -34,10 +30,10 @@
           <h2>쇼핑혜택</h2>
           <ul class="list_in">
             <li>
-              <a href="coupon.html"> 쿠폰 </a>
+              쿠폰
             </li>
             <li>
-              <a href="Mileage.html"> 마일리지 </a>
+              마일리지
             </li>
           </ul>
         </div>
@@ -45,13 +41,13 @@
           <h2>쇼핑활동</h2>
           <ul class="list_in">
             <li>
-              <a href="order"> 나의 찜 </a>
+              나의 찜
             </li>
             <li>
-              <a href="review.html"> 상품리뷰 </a>
+              상품리뷰
             </li>
             <li>
-              <a href="question.html"> 상품문의 </a>
+               상품문의
             </li>
           </ul>
         </div>
@@ -59,13 +55,13 @@
           <h2>회원정보</h2>
           <ul class="list_in">
             <li>
-              <a href="profile.html"> 회원 정보 </a>
+              회원 정보
             </li>
             <li>
-              <a href="delivery.html"> 배송 정보 </a>
+              배송 정보
             </li>
             <li>
-              <a href="quit.html"> 회원 탈퇴 </a>
+              회원 탈퇴
             </li>
           </ul>
         </div>
@@ -144,7 +140,7 @@
           <div class="main_wrap2">
             <div class="title_wrap">
               <div class="title">
-                <h2>주문/배송 조회</h2>
+                  <h2><a>주문/배송 조회</a></h2>
               </div>
             </div>
 
@@ -192,14 +188,14 @@
             <div class="complete">
               <h3 id="current_date"></h3>
               <div class="order_wrap">
-                <img src="https://dummyimage.com/270x82/000/fff" alt="" />
+                <img src="{{ product.main_image.url }}" alt="{{ product.name }}" width="270px" height="82"/>
                 <div class="info">
                   <div class="ok_wrap">
                     <div class="ok">결제 완료</div>
                     <div class="date2" id="current_date2"></div>
                   </div>
-                  <div class="price">11,900원</div>
-                  <div class="name">개 맛도리 사과 6~8입(봉)</div>
+                  <div class="price">{{ product.price }}원</div>
+                  <div class="name">{{ product.name }}</div>
                 </div>
               </div>
             </div>
@@ -207,10 +203,19 @@
         </div>
       </div>
     </div>
-    <!-- footer -->
-    <div class="footer">
-      <iframe src="footer.html" width="100%" height="100%"></iframe>
-    </div>
-    <script src="mypage.js"></script>
-  </body>
-</html>
+        <!-- js 추가 -->
+    {% endblock %}
+{#    <script src="helpyou/mypage.js"></script>#}
+{#<script>#}
+{#    function showOrderInfo() {#}
+{#    document.getElementById("mainContent").style.display = "none";#}
+{#    document.getElementById("orderInfo").style.display = "block";#}
+{#  }#}
+{##}
+{#  date = new Date();#}
+{#  year = date.getFullYear();#}
+{#  month = date.getMonth() + 1;#}
+{#  day = date.getDate();#}
+{#  document.getElementById("current_date").innerHTML = year + "." + month + "." + day;#}
+{#  document.getElementById("current_date2").innerHTML = month + "/" + day;#}
+{#</script>#}

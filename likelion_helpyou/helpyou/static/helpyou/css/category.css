@@ -1,0 +1,113 @@
+.big_wrap{
+  display: table;
+  padding-bottom: 175px;
+  position: relative;
+  width: 1200px;
+  margin: 0px auto;
+}
+
+
+/* 대주제 버튼 글자 크기 */
+#largecate{
+  font-size: 24px;
+}
+/* 중주제 글자크기*/
+.btn-toggle-nav {
+  font-size: 20px; 
+}
+/* 소주제 글자크기*/
+.btn-toggle-nav li a {
+  font-size: 16px; 
+}
+
+.btn-toggle:hover {
+  text-decoration: underline;
+}
+.link-dark{
+  text-decoration: none;
+}
+.link-dark:hover{
+  text-decoration: underline;
+}
+
+/* 리스트  */
+.name h3 {
+  /* height: 50px; */
+  font-size: 40px;
+  font-weight: 700;
+  width: 1180px;
+  margin: 0 auto 80px;
+  padding: 120px 0 0;
+}
+
+.products{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.wrap img{
+  width: 270px;
+  height: 270px;
+}
+
+.addd{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.addd li {
+  text-align: center;
+  width: 25%;
+  margin-right: 0;
+  padding: 0 16px;
+  list-style: none;
+  margin-bottom: 30px;
+  height: 450px;
+  flex-basis: 33%; /* 4개씩 1줄로 표시하기 위해 25%로 설정 */
+}
+
+.name {
+  text-align: center;
+  margin-right: 6px;
+  font-size: 21px;
+  font-weight: 700;
+  color: #212121;
+  margin-top: 12px;
+}
+
+.space1{
+  min-height: 20px;
+  margin-top: 10px;
+}
+
+.all {
+  position: relative;
+  width: 1180px;
+  margin: 0 auto 80px;
+  color: #616161;
+  letter-spacing: -1px;
+}
+.item_info{
+  text-align: center;
+}
+
+.low{
+  position: relative;
+  width: 1200px;
+  min-height: 71px;
+  margin: 0px auto 40px;
+}
+
+.oo{
+  padding-left: 260px;
+  text-align: center;
+}
+
+.oo .name{
+  font-size: 36px;
+  font-weight: 700;
+  color: rgb(51, 51, 51);
+  line-height: 1;
+  margin-bottom: 18px;
+}
