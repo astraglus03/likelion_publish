@@ -111,10 +111,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '_media') # sever local
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
+# 추가!! 나중에 삭제할 수도!
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 
 # 로그인 성공 후 이동하는 URL
 LOGIN_REDIRECT_URL='/'
