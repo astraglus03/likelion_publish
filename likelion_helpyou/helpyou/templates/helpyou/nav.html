@@ -7,29 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/PNG" href="https://cdn.discordapp.com/attachments/1131799837742997516/1133285838885761054/aed41d3d29ef6179.PNG">
     <title>도와줘유</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
-    <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-    crossorigin="anonymous"
-    />
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"
-  ></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="{% static 'helpyou/css/nav.css' %}" rel="stylesheet" type="text/css">
-    <script defer src ="{% static 'helpyou/js/mypage.js' %}"></script>
-        <!-- jQuery 가져오기 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
+
     <!-- 로고 시작 -->
     <div class="header">
         <nav class="navbar navbar-expand-lg bg-light">
@@ -42,26 +31,68 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <!-- 카테고리 -->
+                 <!-- 카테고리 -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <div class="list">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">
-                                    <button type="button" class="btn btn-outline-success">과일<br>(fruit)</button>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <button type="button" class="btn btn-outline-success">쌀/잡곡<br>(rice/grain)</button>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <button type="button" class="btn btn-outline-success">정육/계란<br>(meat/eggs)</button>
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="container">
+                            <div class="dropdown">
+                              <!-- 드롭다운 토글 버튼 -->
+                              <button class="btn btn-outline-success btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                과일<br>(Fruit)
+                              </button>
+                              <!-- 드롭다운 메뉴 -->
+                              <div class="dropdown-menu" id="dropdownItem1" aria-labelledby="dropdownMenuButton1">
+                                <!-- 드롭다운 메뉴 아이템들 -->
+                                <a class="dropdown-item" href="/category/과일/사과/">사과</a>
+                                <a class="dropdown-item" href="#">감귤/만감류</a>
+                                <a class="dropdown-item" href="#">오렌지/자몽/레몬</a>
+                                <a class="dropdown-item" href="#">토마토</a>
+                                <a class="dropdown-item" href="#">메론/참외</a>
+                                <a class="dropdown-item" href="#">포도</a>
+                                <a class="dropdown-item" href="#">딸기</a>
+                                <a class="dropdown-item" href="#">과일세트/바구니</a>
+                              </div>
+                            </div>
+
+
+                            <div class="dropdown">
+                              <!-- 드롭다운 토글 버튼 -->
+                              <button class="btn btn-outline-success btn-lg dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                쌀/잡곡<br>(Rice)
+                              </button>
+                              <!-- 드롭다운 메뉴 -->
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                <!-- 드롭다운 메뉴 아이템들 -->
+                                <a class="dropdown-item" href="#">백미</a>
+                                <a class="dropdown-item" href="#">찹쌀</a>
+                                <a class="dropdown-item" href="#">현미/흑미</a>
+                                <a class="dropdown-item" href="#">혼합곡</a>
+                                <a class="dropdown-item" href="#">수입잡곡</a>
+                                <a class="dropdown-item" href="#">수수/조/깨</a>
+                                <a class="dropdown-item" href="#">콩/팥</a>
+                                <a class="dropdown-item" href="#">보리/귀리</a>
+                              </div>
+                            </div>
+
+
+                            <div class="dropdown">
+                              <!-- 드롭다운 토글 버튼 -->
+                              <button class="btn btn-outline-success btn-lg dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                정육/계란<br>(meat/Egg)
+                              </button>
+                              <!-- 드롭다운 메뉴 -->
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                <!-- 드롭다운 메뉴 아이템들 -->
+                                <a class="dropdown-item" href="#">돼지고기</a>
+                                <a class="dropdown-item" href="#">소고기</a>
+                                <a class="dropdown-item" href="#">닭고기</a>
+                                <a class="dropdown-item" href="#">계란</a>
+                              </div>
+                            </div>
+                        </div>
+                                     <!-- jQuery 가져오기 -->
+    <script defer src ="{% static 'helpyou/js/nav.js' %}"></script>
+                    </div>
                         <!-- 검색 -->
                     </div>
                     <form class="d-flex col-4" role="search" id="searchbutton" >
@@ -89,40 +120,11 @@
                             </form>
                         </div>
                     </div>
-                    
+
                 </div>
+            </nav>
             </div>
-        </nav>
-    </div>
 
-
-<script>
-    $("#dropdownMenuButton1").hover(function () {
-    $("#dropdownMenuButton2, #dropdownMenuButton3").attr("aria-expanded", "false");
-    $("#dropdownMenuButton2, #dropdownMenuButton3").next().removeClass("show");
-    $(this).attr("aria-expanded", "true");
-    $(this).next().addClass("show");
-});
-$("#dropdownMenuButton2").hover(function () {
-    $("#dropdownMenuButton1, #dropdownMenuButton3").attr("aria-expanded", "false");
-    $("#dropdownMenuButton1, #dropdownMenuButton3").next().removeClass("show");
-    $(this).attr("aria-expanded", "true");
-    $(this).next().addClass("show");
-});
-$("#dropdownMenuButton3").hover(function () {
-    $("#dropdownMenuButton1, #dropdownMenuButton2").attr("aria-expanded", "false");
-    $("#dropdownMenuButton1, #dropdownMenuButton2").next().removeClass("show");
-    $(this).attr("aria-expanded", "true");
-    $(this).next().addClass("show");
-});
-
-$(document).ready(function() {
-  $(document).on("click", function(event) {
-    $("#dropdownMenuButton1, #dropdownMenuButton2, #dropdownMenuButton3").attr("aria-expanded", "false");
-    $("#dropdownMenuButton1, #dropdownMenuButton2, #dropdownMenuButton3").next().removeClass("show");
-  });
-});
-</script>
 </body>
 
 </html>
