@@ -1,0 +1,329 @@
+{% extends 'helpyou/base.html' %}
+{% load static %}
+{% load mathfilters %}
+
+    {% block css_area %}
+      <link href="{% static 'helpyou/css/product_detail.css' %}" rel="stylesheet" type="text/css">
+    {% endblock %}
+
+
+    {% block main_area %}
+
+    <div class="container">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/" style="text-decoration: none;">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">과일</li></li>
+              <li class="breadcrumb-item active" aria-current="page">사과</li>
+            </ol>
+          </nav>
+
+        <div class="row">
+            <div class="col-2" id="row-row">   
+                <div class="flex-shrink-0 p-3 bg-white" style="width: auto;" id="category-title">
+                    <a href="Category.html" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#"/></svg>
+                      <span class="fs-5 fw-semibold">카테고리</span>
+                    </a>
+                    <ul class="list-unstyled ps-0">
+              <!-- 세금 대주제 -->
+              <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false" id="largecate">과일</button>
+                <div class="collapse" id="home-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4">
+                    <!-- 중주제 -->
+                    <li>
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-kookmin-subtopics" aria-expanded="false" id="sub-kookmin-subtopics">국민은행</button>
+                      <div class="collapse" id="sub-kookmin-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-kookmin-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+        
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-nh-subtopics" aria-expanded="false"   id="sub-nh-subtopics">NH농협은행</button>
+                      <div class="collapse" id="sub-nh-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-nh-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+        
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-woori-subtopics" aria-expanded="false" id="sub-woori-subtopics">우리은행</button>
+                      <div class="collapse" id="sub-woori-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-woori-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-hana-subtopics" aria-expanded="false" id="sub-hana-subtopics">하나은행</button>
+                      <div class="collapse" id="sub-hana-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-hana-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-ibk-subtopics" aria-expanded="false"  id="sub-ibk-subtopics">IBK기업은행</button>
+                      <div class="collapse" id="sub-ibk-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-ibk-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-shinhan-subtopics" aria-expanded="false" id="sub-shinhan-subtopics">신한은행</button>
+                      <div class="collapse" id="sub-shinhan-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-shinhan-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-sc-subtopics" aria-expanded="false" id="sub-sc-subtopics">SC제일은행</button>
+                      <div class="collapse" id="sub-sc-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-sc-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-keb-subtopics" aria-expanded="false" id="sub-keb-subtopics">KEB외환은행</button>
+                      <div class="collapse" id="sub-keb-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-keb-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-city-subtopics" aria-expanded="false" id="sub-city-subtopics">시티은행</button>
+                      <div class="collapse" id="sub-city-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-city-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-suhyup-subtopics" aria-expanded="false" id="sub-suhyup-subtopics">수협은행</button>
+                      <div class="collapse" id="sub-suhyup-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-suhyup-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-daegu-subtopics" aria-expanded="false" id="sub-daegu-subtopics">대구은행</button>
+                      <div class="collapse" id="sub-daegu-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-daegu-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-busan-subtopics" aria-expanded="false" id="sub-busan-subtopics">부산은행</button>
+                      <div class="collapse" id="sub-busan-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-busan-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-gwhangu-subtopics" aria-expanded="false" id="sub-gwhangu-subtopics">광주은행</button>
+                      <div class="collapse" id="sub-gwhangu-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-gwhangu-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-jeju-subtopics" aria-expanded="false" id="sub-jeju-subtopics">제주은행</button>
+                      <div class="collapse" id="sub-jeju-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-jeju-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                      <div>
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-jeonbuk-subtopics" aria-expanded="false" id="sub-jeonbuk-subtopics">전북은행</button>
+                      <div class="collapse" id="sub-jeonbuk-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-jeonbuk-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <div>           
+                      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#sub-kyungnam-subtopics" aria-expanded="false" id="sub-kyungnam-subtopics">경남은행</button>
+                      <div class="collapse" id="sub-kyungnam-subtopics">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4" id="sub-kyungnam-subtopics">
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">조회</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">이체</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">공과금</a></li>
+                          <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">뱅킹</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+                    </ul>
+                </div>  
+                </div>
+
+            <div class="col-5" id="product-image">
+
+                <div class="main-image-container">
+                    <img src="https://loremflickr.com/408/350/dog" alt="">
+                </div>
+                <div class="sub-image-container">
+                    <div><img src="https://loremflickr.com/110/140/turtle" alt=""></div>
+                    <div><img src="https://loremflickr.com/110/140/mouse" alt=""></div>
+                    <div style="margin-right: 0;"><img src="https://loremflickr.com/110/140/cat" alt=""></div>
+                </div>
+            </div>
+
+
+            <div class="col-5" id="product-col-5">
+                
+                <!-- 초록사과5~8입은 제목임 장고에서 title로 가져오면 될듯 -->
+                <div class="title"> {{ product.name }} <button type="button" class="sale-button">3000원 카드할인 </button></div>
+                <div class="origin" style="margin-bottom: 30px;">원산지: 국산</div>
+                <div class="price-container"><div class="original-price">판매가:</div> <div class="price">{{ product.price }}원</div> (1{{ product.unit }}당
+                    {{ product.price }}원)</div>                                           <!--판매가-카드할인가 연산-->
+                <div class="sale-price-container"><div class="sale-price">카드할인가:</div> <div class="card-price">{{ product.price|sub:product.card }}원</div> (1{{ product.unit }}당 {{ product.price|sub:3000 }}원)</div>
+                
+                <div class="row" id="advan">
+                    <div class="col-3">
+                        <div class="card-advan">카드혜택</div>
+                    </div>
+                    <div class="col-9">
+                        모든 신용카드 이용시 2~3개월 무이자 할부 
+                    </div>
+                </div>
+                <div class="row" id="advan">
+                    <div class="col-3">
+                        <div class="accum-advan">적립혜택</div>
+                    </div>
+                    <div class="col-9">
+                        <!-- 포인트 적립은 판매 금액에 10%로 나올수있게 하려고함 -->
+                        마이홈플러스 포인트 100P적립 
+                    </div>
+                </div>
+                <div class="row" id="advan">
+                    <div class="col-3">
+                        <div class="deliver-info">배송정보</div>
+                    </div>
+                    <div class="col-9">
+                        <div class="deliver-container">
+                            <div class="mart-del-container">
+                                <div class="none">매장</div>
+                                <span class="mart-del">마트배송</span>
+                            </div>
+                            <div class="market">천안점</div>
+                            <span class="order-date">지금 주문하면 내일 15시~17시 도착</span>
+                            <div class="del-conatiner">
+                                <span class="del-price">{{ product.delivery }}원</span> <span class="free-del">(40,000원 이상 구매 시 무료배송)</span>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="num-container">
+                    <div class="item-title-container">
+                        <span class="item-title">{{ product.name }}</span>
+                    </div>
+                    <div class="adjust-container">
+                        <div class="adjust-quantity-container">
+                            <button class="minus" type="button">-</button>
+                            <input type="text" value="1">
+                            <button class="plus" type="button">+</button>
+                        </div>
+                        <div class="adjust-price">
+                            <span>{{ product.price }}원</span>
+                        </div>
+                    </div>
+                </div>
+                    <div class="expected-price-container">
+                        <div class="expected-price">
+                            <span class="buy-expect">구매예정</span>
+                            <span class="total-expect">{{ product.price }}<span style="font-size: small; color: black;">원</span></span>
+                        </div>
+                    </div>
+                    <div class="keep-cart-container">
+                        <span>
+                            <button type="button" onclick="location.href='/cart/'">장바구니</button>
+                        </span>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+{#    <script>#}
+{#        function moveToCartPage() {#}
+{#          window.location.href = "cart.html";#}
+{#        }#}
+{#      </script>#}

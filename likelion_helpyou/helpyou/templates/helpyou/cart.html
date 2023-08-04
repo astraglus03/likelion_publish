@@ -1,0 +1,223 @@
+{% extends 'helpyou/base.html' %}
+{% load static %}
+{% load mathfilters %}
+
+    {% block css_area %}
+      <link href="{% static 'helpyou/css/cart.css' %}" rel="stylesheet" type="text/css">
+    {% endblock %}
+
+    {% block main_area %}
+
+  <div class="container">
+    <div class="cart-title-container">
+      <span class="cart-title">장바구니</span>
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/cart/">장바구니</a></li>
+          <li class="breadcrumb-item active" aria-current="page">배송정보</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="/payment/">주문/결제</a></li>
+          <li class="breadcrumb-item active" aria-current="page">주문완료</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="cart-address-container">
+      <div class="cart-address">
+        <div class="location-address">
+        <span class="location">학교</span>
+        <!-- 장고부분에서는 회원가입 때 입력한 주소 가져오기 -->
+        <div class="address">
+          충청남도 천안시 동남구 상명대길 31, 상명대학교 천안캠퍼스 한누리관
+        </div>
+      </div>
+        <div class="admin-address-button-container">
+          <button type="button" class="admin-address-button">배송지 관리</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bodywrapper">
+      <div class="address-method-button-container">
+        <div class="address-method-button">
+          <button type="button" >일반 배송</button>
+          <button type="button" >즉시 배송</button>
+          <button type="button" >예약 배송</button>
+        </div>
+      </div>
+
+      <div class="order-container">
+        <div class="order-left-container">
+          <div class="all-check-del-container">
+            <div class="all-check-container">
+              <label for="all-check">
+              <input type="checkbox" id="all-check" class="check-check">
+              <span>전체선택</span>
+              </input>
+            </label>
+            </div>
+            <div class="del-container">
+              <span class="choose-del"> <button type="button" style="border-right: 1px solid lightgray;">선택삭제</button></span>
+              <span class="soldout-del"><button type="button">품절상품 모두삭제</button></span>
+            </div>
+          </div>
+
+          <div class="choose-container">
+            <div class="location-freedel-container">
+              <div class="location-container">
+                <label for="location-check">
+                  <input type="checkbox" id="location-check" class="check-check">
+                  <span class="location">천안점</span>
+                  </input>
+                </label>    
+              </div>
+
+              <div class="free-del-container">
+                <div class="freedel-container">
+                                                                            {#4만 원 - 판매가 계산#}
+                  <div class="free-del" style="display: inline;"></div><span>{{ 40000|sub:product.price }}원 더 담으면 무료 배송</span>
+                </div>
+                <div class="free-progress-container">
+                  <div class="progress" style="height: 10px;">
+                    <div class="progress-bar" role="progressbar" aria-label="Example 1px high" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="del-time-container">
+                  <span class="del-time">지금 주문하면 금요일 15:00~18:00까지 점포배송 가능</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="option-product-pricedel-container">
+              <div class="option-container" id="option-product-pricedel-same">
+                <div class="check-title" style="flex: 0;">
+                  <input type="checkbox" id="option" class="check-check"></input>
+                </div>
+                <div class="product-option-title" style="flex: 6;">
+                  <span>상품/옵션정보</span>
+                </div>
+                <div class="buy-expect-title" style="flex: 3;">
+                  <span>구매예정금액</span>
+                </div>
+                <div class="choose-title" style="flex: 1;">
+                  <span>선택</span>
+                </div>
+              </div>
+
+              <div class="buy-expect-container">
+                <div class="check" style="flex: 0;"><input type="checkbox" id="option" class="check-check"></input></div>
+                <div class=" product-option" style="flex: 6; display: flex; flex-direction: row; align-items: center;">
+                  <div class="product-image" style="height: auto; width: auto;">
+                      <img src="https://loremflickr.com/100/100/cat" alt=""></img>
+                  </div>
+                  <div class="product-image-right">
+                  <div class="product-title-container">
+                    <button type="button" class="event-button">행사 미적용 상품 </button>
+                    <p class="product-title">{{ product.name }}</p>
+                  </div>
+                  <div class="adjust-quantity-container">
+                    <button class="minus" type="button">-</button>
+                      <input type="text" value="1"></input>
+                    <button class="plus" type="button">+</button>
+                </div>
+                </div>
+              </div>
+                <div class="buy-expect" style="flex: 3;">
+                  <div class="expected-price">{{ product.price }}</div><span style="color: gray;">원</span>
+                  <div>(판매가 - 카드할인가) = {{ product.price|sub:product.card }}원</div>
+                </div>
+                <div class="choose" style="flex: 1;">
+                  <button type="button" class="trash-can-button"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+              </div>
+              <div class="delprice-container" id="option-product-pricedel-same">
+                <div class="receipt">
+                  주문금액 <span class="order-price">{{ product.price }}원</span> &nbsp;+ &nbsp;배송비 {{ product.delivery }}원 &nbsp;= &nbsp;<span class="total-price">{{ product.price|add:product.delivery }}원</span>(4만원 이상 무료배송)
+                </div>
+                <div class="save-delprice">
+                  <span total-product-price>{{40000|sub:product.price}}원 </span>더 담으면 <span> <a href="#" style="text-decoration: none; color: red;"> 무료배송! 배송비 절약하기 ></a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="order-right-container">
+          <div class="total-container">
+            <div class="pay-container">
+            <div class="right-total-price-container">
+              <span id="more-bold">총 주문금액</span>
+              <div class="right-total-price">
+                <span class="right-total" id="more-bold">{{product.price}}</span><span> 원</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="totalbox-container">
+            <div class="right-totalbox-price-container">
+              <span>점포배송(<span class="num">1</span><span>건)</span></span>
+              <div class="right-totlabox-price">
+                <span class="right-total">{{ product.price }}<span> 원</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="discount-container">
+            <div class="right-discount-price-container">
+              <span>할인금액</span>
+              <div class="right-discount-price">
+                <span class="right-account" id="more-bold">0</span><span> 원</span>
+              </div>
+            </div>
+          </div>          
+
+
+        <div class="deliver-container">
+          <div class="right-deliver-price-container">
+            <span>배송비</span>
+            <div class="right-deliver-price">
+              <span class="right-deliver" id="more-bold">{{ product.delivery }}</span><span> 원</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="deliverbox-container">
+          <div class="right-deliverbox-price-container">
+            <span>배송비</span>
+            <div class="right-deliverbox-price">
+              <span class="right-deliverbox">{{ product.delivery }} 원</span>
+            </div>
+          </div>
+        </div>
+
+      <div class="pay-befo-container">
+        <div class="pay-accum-container">
+          <span>최종 결제예정금액</span>
+          <p class="accum-point">포인트 적립: 결제 금액의 10%</p>
+        </div>
+        <div class="pay-befo-price-container">
+          <span class="right-total" style="color: red; font-size: x-large;">{{product.price|add:product.delivery}}</span><sub style="font-size: large;">원</sub>
+      </div>
+      </div>
+
+      <div class="payment-button">
+        <button type="button" onclick="location.href='/payment/1'">주문하기</button>
+      </div>
+    </div>
+
+        </div>
+      </div>
+      <!-- 장바구니 안내 div 여기 -->
+      <div class="cart-explain-container">
+        <h4>장바구니 안내</h4>
+        <ul class="cart-explain">
+          <li>장바구니에는 100개까지 상품을 담을수 있고 최대 90일까지 보관됩니다.</li>
+          <li>상품 우측의 '휴지통 버튼'을 누르시면 장바구니에서 삭제됩니다</li>
+          <li>PC와 모바일은 서로 연동되지만 적용에 시간 차가 있을 수 있습니다.</li>
+          <li>품절 상품은 별도 표기 됩니다.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}

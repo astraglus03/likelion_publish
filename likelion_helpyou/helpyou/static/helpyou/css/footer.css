@@ -1,0 +1,36 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  /* padding-bottom: 100%; */
+}
+
+/*#wrapper {*/
+/*  height: auto;*/
+/*  min-height: 100%;*/
+/*  padding-bottom: 30px;*/
+/*}*/
+footer {
+  position: relative;
+  /*height: 30px;*/
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: lightgray;
+  text-align: center;
+  /*margin-top: 40px;*/
+  /*transform : translateY(-100%);*/
+}
+
+.row {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.col-lg-3 {
+  padding-left: 0;
+  padding-right: 0;
+}

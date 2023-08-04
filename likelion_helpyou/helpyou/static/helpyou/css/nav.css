@@ -1,0 +1,52 @@
+.list li{ /* 헤더 리스트 */
+    display: flex;
+    justify-content: space-;
+    margin-right: 45px;
+    margin-left: 50px;
+}
+.list button{ /* 헤더 버튼 */
+    width: 150px;
+    font-size: x-large;
+    font-weight:300;
+    color: black;
+    border: none;
+}
+.nav-item{
+    width: max-content;
+    height: max-content;
+    text-align: center;
+}
+.container-fluid{ /*로고 옆 마진 */
+    margin-left: 30px;
+}
+#searchbutton{
+    margin-left: auto;
+}
+.d-flex button{
+    width: 150px;
+    height: 90px;
+}
+@media (max-width: 1500px) {
+    .list li {
+        flex-wrap: wrap; /* 화면 크기가 줄어들면 리스트 아이템이 줄바꿈 */
+        justify-content: center; 
+        margin-right: 0; /* 마진 제거 */
+        margin-left: 0; /* 마진 제거 */
+        margin-bottom: 10px; /* 아이템들 사이에 간격 */
+    }
+
+    .list button {
+        width: 150px; 
+        margin: 5px 0; 
+    }
+
+    .container-fluid {
+        margin-left: 0; /* 작은 화면에서 마진 제거 */
+    }
+
+    /* 다른 요소들에 대한 스타일 수정 */
+
+    .navbar-brand img {
+        width: 150px; /* 로고 이미지의 크기를 줄임 */
+    }
+}

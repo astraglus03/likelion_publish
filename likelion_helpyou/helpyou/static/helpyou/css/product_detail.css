@@ -1,0 +1,162 @@
+.container{
+    margin-bottom: 30px;
+}
+#product-image{
+    justify-content: center;
+    align-items:center;
+    width: 408px;
+    height: 500px;
+}
+.main-image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sub-image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+.sub-image-container div{
+    margin-right: 10px;
+}
+#product-col-5{
+    margin-left: 40px;
+}
+.origin{
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+/* .sale-button{
+    border: 1px solid lightgrey;
+    font-weight: lighter;
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    
+} */
+.sale-button {
+    /* 버튼의 너비와 높이를 조절 */
+    width: 150px;
+    height: 30px;
+    color: rgb(173, 197, 230);
+    font-size: 16px;
+    border: 1px solid rgb(173, 197, 230);
+    cursor: pointer;
+    /* 버튼 테두리를 없애고, 라운드 처리를 해서 더 깔끔하게 표현 */
+    border-radius: 5px;
+  }
+.price{
+    display: inline;
+}
+.title, .price{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.card-price{
+    display: inline;
+    font-weight: bold;
+}
+.original-price{
+    display: inline;
+    margin-right: 30px;
+}
+.sale-price{
+    display: inline;
+    margin-right: 10px;
+}
+.price-container{
+    margin-bottom: 10px;
+}
+.sale-price-container{
+    margin-bottom: 40px;
+}
+.none{
+    display: inline;
+    background-color: lightgray;
+    padding: 3px;
+}
+.order-date{
+    font-weight: bold;
+}
+.mart-del{
+    font-weight:bold;
+}
+.market{
+    display: inline;
+    margin-right: 10px;
+}
+.deliver-container{
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 10px;
+}
+#advan{
+    margin-bottom: 20px;
+    border-bottom: 1px solid lightgray;
+    padding: 10px;
+}
+.del-price, .free-del{
+    font-size: small;
+    color: rgb(102, 102, 102);
+}
+.num-container{
+    background-color: rgb(249, 250, 251);
+    border: 1px solid rgb(221, 221, 221);
+    padding: 10px;
+}
+.adjust-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.adjust-quantity-container button{
+    border: none;
+}
+.adjust-quantity-container input[type="text"] {
+    width: 8%; 
+    box-sizing: border-box;
+    /* border: none; */
+    text-align: center;
+  }
+
+  .item-title-container{
+    margin-left: 10px;
+  }
+  .expected-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  .expected-price-container{
+    margin-top: 20px;
+  }
+  .buy-expect{
+    font-weight: bold;
+  }
+  .total-expect{
+    font-size: xx-large;
+    color: red;
+    font-weight: bold;
+  }
+  .keep-cart-container{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+  .keep-cart-container button{
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    min-width: 200px;
+    height: 70px;
+    margin-left: 2px;
+    line-height: 75px;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(223, 0, 17);
+    border: none;
+  } 

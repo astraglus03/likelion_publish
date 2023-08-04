@@ -1,0 +1,266 @@
+html, body, h1, h2, h3, h4, h5, h6, div, p, header, main, video, audio, footer, nav, aside, article, span, em, strong, i, ol, ul, li, a, legend, fieldset, label, input, select, textarea, button, time, abbr, address, area, b, br, table, caption, summary, tbody, thead, tfoot, tr, th, td, dl, dt, dd, figcaption, figure, form, iframe, mark, pre, hr {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+
+
+.container {
+    width: 1200px;
+    margin: 0px auto;
+    padding: 60px 0px 100px;
+}
+.container::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/* 사이드 */
+.side{
+    float: left;
+    width: 220px;
+    margin-right: 40px;
+}
+
+h1{
+    font-size: 24px;
+    line-height: 1;
+    margin-bottom: 60px;
+}
+
+ul, ol, li {
+    list-style-type: none;
+}
+
+.list{
+    padding-bottom: 40px;
+    margin-bottom: 13px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.list_in{
+    padding-left: 15px;
+}
+
+.list_in a{
+    line-height: 1.5;
+    display: inline-block;
+    color: black;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+/* 메인 회원 정보*/
+.main{
+    float: left;
+    width: calc(100% - 260px);
+}
+
+.main_wrap{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.mem_info{
+    float: left;
+    width: 315px
+}
+.grade{
+    float: left;
+    width: 50px;
+    text-align: center;
+}
+
+.mem_detail{
+    width: calc(100% - 70px);
+    padding: 10px 20px 0px 60px;
+    font-size: 20px;
+}
+.mem_detail strong{
+    display: inline;
+}
+
+.benefit{
+    float: left;
+    width: calc(100% - 315px);
+    height: 50px;
+}
+
+.num {
+    background-color: white;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 20px;
+  }
+  .benefit li{
+    float: left;
+    width: 207px;
+    height: 100%;
+    padding: 0px 0px 0px 30px;
+    border-left: 1px solid rgb(238, 238, 238);
+  }
+
+/* 메인 주문 정보 */
+.user_timelineBox {
+    position: relative;
+    margin-top: 80px;
+    padding: 40px 30px;
+    background: rgb(249, 250, 251);
+}
+
+.subtitle{
+    margin-top: 0px;
+}
+
+.title{
+    display: inline-block;
+}
+
+.title_area p{
+    display: inline-block;
+    margin-left: 5px;
+    color: rgb(153, 153, 153);
+    padding-bottom: 20px;
+}
+
+.orderSummaryBox {
+    height: 112px;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 3px;
+}
+.orderSummaryBox li{
+    float: left;
+    width: 20%;
+    padding: 25px 0px 0px;
+}
+.orderSummaryBox em{
+    display: block;
+    margin-bottom: 4px;
+}
+.orderSummaryBox a{
+    font-size: 30px;
+    vertical-align: sub;
+    font-weight: 800;
+}
+
+/* 조회 메인 */
+.main2{
+    float: left;
+    width: calc(100% - 260px);
+}
+
+.main_wrap2{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.title_wrap{
+    padding-bottom: 30px;
+}
+
+.title{
+    font-size: 25px;
+}
+
+/* 날짜 */
+.date{
+    width: 100%;
+    padding: 30px;
+    border-radius: 3px;
+    background-color: rgb(249, 250, 251);
+}
+
+.date_wrap{
+    display: flex;
+}
+
+.time{
+    display: flex;
+    margin-right: 20px;
+}
+
+.time_name{
+    margin-right: 20px;
+    font-weight: 700;
+}
+
+.btnList{
+    display: flex;
+    margin-right: 20px;
+}
+
+.calendar input{
+    font-size: 20px;
+}
+
+.tilde{
+    margin: 0px 15px;
+    font-size: larger;  
+}
+.month_btn{
+    width: 80px;
+    height: 29px;
+    background-color: white;
+}
+
+button{
+    border: 0px;
+    background: none;
+    cursor: pointer;
+    outline: 0px;
+}
+
+.btnSearch{
+    background-color: black;
+    color: white;
+}
+
+/* 주문완료 */
+.complete{
+    margin-top: 100px;
+}
+.complete h3{
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.ok{
+    display: inline-block;
+    color: red;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.ok_wrap{
+    display: flex;
+}
+
+.order_wrap {
+    display: inline-block;
+}
+
+  
+.order_wrap img {
+    vertical-align: middle; /* 이미지와 인라인 요소의 수직 정렬 */
+    padding: 0 30px 0 0;
+}
+  
+.info {
+    display: inline-block;
+    vertical-align: middle; /* 인라인 요소들의 수직 정렬 */
+}
+
+.price{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.name{
+    color: rgb(153, 153, 153);
+    font-weight: 400;
+}

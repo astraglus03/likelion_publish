@@ -1,0 +1,230 @@
+{% extends 'helpyou/base.html' %}
+{% load static %}
+{% load mathfilters %}
+
+    {% block css_area %}
+      <link href="{% static 'helpyou/css/payment.css' %}" rel="stylesheet" type="text/css">
+    {% endblock %}
+
+
+    {% block main_area %}
+
+    <!-- 전체 컨테이너 -->
+    <div class="container">
+      <div class="payment-title-container">
+        <span class="payment-title">주문/결제</span>
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item active" aria-current="page"><a href="/cart/">장바구니</a></li>
+            <li class="breadcrumb-item active" aria-current="page">배송정보</li>
+              <li class="breadcrumb-item"><a href="/payment/">주문/결제</a></li>
+            <li class="breadcrumb-item active" aria-current="page">주문완료</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="payment-container">
+        <!-- 왼쪽 컨테이너 -->
+        <div class="left-container">
+          <div class="order-pro-container">
+            <div class="order-pro-title">
+              <div class="helpFlex">
+              <b>주문상품</b><span class="quantity" style="color: red;"> 1개</span>
+            </div>
+              <button type="button" class="edit-pro">상품 수정하기</button>
+            </div>
+            <img src="https://loremflickr.com/120/120/cat" alt="" class="pro-image">
+          </div>
+
+          <div class="deliver-info-title-container">
+            <b style="font-size: x-large;">배송 정보</b>
+          </div>
+
+          <div class="deliver-info-container">
+            <table class="deliver-info-table">
+              <tr>
+                <td><b>주문자</b></td>
+                <td><span class="order-name">Eric</span> / <span class="order-num">010-0000-0000</span> <br>*주문자 정보로 결제 관련 정보가 제공됩니다.</td>
+              </tr>
+              <tr>
+                <td><b>받는분</b></td>
+                <td><span class="order-name">Eric</span> / <span class="order-num">010-0000-0000</span><button type="button" class="safe-num"> (안심번호 사용하기)</button></td>
+              </tr>
+              <tr>
+                <td><b>주소</b></td>
+                <td>[주소] 충청남도 천안시 동남구 신부동 321-5, 302호</td>
+              </tr>
+              <tr>
+                <td><b>점포배송 요청</b></td>
+                <td class="request-container">
+                  <span>수령위치 | 없음</span>
+                  <button type="button" class="change-button">변경</button>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="payment-info-title-container">
+            <b style="font-size: x-large;">결제정보</b>
+          </div>
+
+          <div class="normal-payment-container">
+            <div class="payment-methods">
+              <label>
+                <input type="radio" name="payment-method" checked>
+                일반결제
+              </label>
+            </div>
+                <div class="button-select-container">
+                <div class="payment-buttons">
+                <button type="button" id="benefit">신용카드</button>
+                <button type="button" id="none">카카오페이</button>
+                <button type="button" id="none">네이버페이</button>
+                <button type="button" id="none">토스</button>
+                <button type="button" id="none">페이코</button>
+                </div>
+                <div class="card-select">
+                <select>
+                    <option>카드를 선택하세요</option>
+                    <option>스페셜 신한카드</option>
+                    <option>신한카드</option>
+                    <option>KB국민카드</option>
+                    <option>BC카드</option>
+                    <option>현대카드</option>
+                    <option>삼성카드</option>
+                    <option>롯데카드</option>
+                    <option>하나카드</option>
+                    <option>카카오뱅크카드</option>
+                    <option>우리카드</option>
+                    <option>씨티카드</option>
+                    <option>NH카드</option>
+                    <option>우체국체크카드</option>
+                    <option>제주카드</option>
+                    <option>수협카드</option>
+                    <option>전북카드</option>
+                    <option>광주카드</option>
+                    <option>케이뱅크카드</option>
+                    <option>MG새마을금고카드</option>
+                    <option>저축은행카드</option>
+                </select>
+                <span>일시불</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 신용카드 클릭시 이거 나오게 할 예정 -->
+        <div class="discount-card-container">
+          <div class="payment-methods">
+            <p>카드즉시할인</p>
+          </div>
+              <div class="buttons-select-container">
+                  <li class="card-discount-item">광주카드결제 시 -3000원</li>
+                  <li class="card-discount-item">전북카드결제 시 -3000원</li>
+                  <li class="card-discount-item">롯데카드결제 시 -3000원</li>
+                  <li class="card-discount-item">하나카드결제 시 -3000원</li>
+                  <li class="card-discount-item">우리카드결제 시 -3000원</li>
+                  <li class="card-discount-item">KB국민카드결제 시 -3000원</li>
+                  <li class="card-discount-item">삼성카드결제 시 -3000원</li>
+                  <li class="card-discount-item">스페셜신한카드/ 신한카드결제 시 -3000원</li>
+                <div class="discount-info-container">
+                  <ul>
+                    <li class="discount-info">카드즉시할인 적용시 해당 카드로만 결제 가능합니다.</li>
+                    <li class="discount-info">카드할인 적용 시 상품쿠폰, 마일리지, 포인트적립, 디지털/모바일 상품권과의 중복할인이 불가합니다.</li>
+                  </ul>
+                </div>
+            </div>
+      </div>
+
+      <!-- 신용카드 제외하고 나머지 카드가 선택됐을때 -->
+      <div class="no-benefit-container">
+        <div class="no-bene">
+          <ul>
+          <li style="list-style-type: none;">카드사 제휴 혜택은 제공되지 않습니다</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <!-- 왼쪽 컨테이너 종료 -->
+
+        <!-- 오른쪽 컨테이너 -->
+        <div class="right-container">
+          <div class="total-container">
+            <div class="pay-container">
+            <div class="right-total-price-container">
+              <span id="more-bold">총 주문금액</span>
+              <div class="right-total-price">
+                <span class="right-total" id="more-bold">{{ product.price }}</span><span> 원</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="totalbox-container">
+            <div class="right-totalbox-price-container">
+              <span>점포배송(<span class="num">1</span><span>건)</span></span>
+              <div class="right-totlabox-price">
+                <span class="right-total">{{ product.price }}<span> 원</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="discount-container">
+            <div class="right-discount-price-container">
+              <span>할인금액</span>
+              <div class="right-discount-price">
+                <span class="right-account" id="more-bold">0</span><span> 원</span>
+              </div>
+            </div>
+          </div>          
+
+
+        <div class="deliver-container">
+          <div class="right-deliver-price-container">
+            <span>배송비</span>
+            <div class="right-deliver-price">
+              <span class="right-deliver" id="more-bold">{{ product.delivery }}</span><span> 원</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="deliverbox-container">
+          <div class="right-deliverbox-price-container">
+            <span>배송비</span>
+            <div class="right-deliverbox-price">
+              <span class="right-deliverbox">{{ product.delivery }} 원</span>
+            </div>
+          </div>
+        </div>
+
+      <div class="pay-befo-container">
+        <div class="pay-accum-container">
+          <span>최종 결제예정금액</span>
+          <p class="accum-point">포인트 적립: 결제 금액의 10%</p>
+        </div>
+        <div class="pay-befo-price-container">
+          <span class="right-total" style="color: red; font-size: x-large;">{{ product.price|add:product.delivery }}</span><sub style="font-size: large;">원</sub>
+      </div>
+      </div>
+      <div class="collect-agree-container">
+        <p class="agree-letter">
+          상품의 구매조건 확인, 결제 진행 및 개인정보 수집 이용에 동의합니다. 구매시 자동으로 동의됩니다.
+        </p>
+      </div>
+
+      <div class="payment-button">
+        <button type="button" onclick="moveToPaymentFinishPage()">결제하기</button>
+      </div>
+
+    </div>
+        </div>
+      </div> <!-- payment container-->
+
+    </div>
+
+    {% endblock %}
+    <!-- 기능적인 자바스크립트 코드 수정 예정 -->
+    <script>
+      function moveToPaymentFinishPage() {
+        window.location.href = "payment.html";
+      }
+    </script>
+
