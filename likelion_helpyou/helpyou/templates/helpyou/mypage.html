@@ -194,7 +194,7 @@
                     <div class="ok">결제 완료</div>
                     <div class="date2" id="current_date2"></div>
                   </div>
-                  <div class="price">{{ product.price }}원</div>
+                  <div class="price">{{ product.price|add:product.delivery }}원</div>
                   <div class="name">{{ product.name }}</div>
                 </div>
               </div>
