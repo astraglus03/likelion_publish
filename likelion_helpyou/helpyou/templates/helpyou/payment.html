@@ -1,6 +1,7 @@
 {% extends 'helpyou/base.html' %}
 {% load static %}
 {% load mathfilters %}
+{% load humanize %}
 
     {% block css_area %}
       <link href="{% static 'helpyou/css/payment.css' %}" rel="stylesheet" type="text/css">
@@ -9,16 +10,32 @@
 
     {% block main_area %}
 
+            <!-- jQuery 로드 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap 로드 -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+    crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
     <!-- 전체 컨테이너 -->
 
       <div class="payment-title-container">
         <span class="payment-title">주문/결제</span>
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
           <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page"><a href="/cart/">장바구니</a></li>
-            <li class="breadcrumb-item active" aria-current="page">배송정보</li>
-              <li class="breadcrumb-item"><a href="/payment/">주문/결제</a></li>
-            <li class="breadcrumb-item active" aria-current="page">주문완료</li>
+            <li class="breadcrumb-item"><a href="/category/과일/사과/{{ product.pk }}">과일/사과</a></li>
+            <li class="breadcrumb-item"><a href="/cart/{{ product.pk }}">장바구니</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="/payment/{{ product.pk }}">주문/결제</a></li>
+            <li class="breadcrumb-item active" aria-current="page">마이페이지</li>
           </ol>
         </nav>
       </div>
@@ -31,8 +48,10 @@
               <div class="helpFlex">
               <b>주문상품</b><span class="quantity" style="color: red;"> 1개</span>
             </div>
-              <button type="button" class="edit-pro">상품 수정하기</button>
-            </div>
+              <button type="button" class="edit-pro"
+                  data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left"
+                  data-bs-content="스크롤을 아래로 내려 구매정보를 확인하세요." id="pGuide">상품 수정하기</button>
+               </div>
             <img src="{{ product.main_image.url }}" alt="{{ product.name }}" class="pro-image" width="120" height="120">
           </div>
 
@@ -44,15 +63,16 @@
             <table class="deliver-info-table">
               <tr>
                 <td><b>주문자</b></td>
-                <td><span class="order-name">Eric</span> / <span class="order-num">010-0000-0000</span> <br>*주문자 정보로 결제 관련 정보가 제공됩니다.</td>
+                <td><span class="order-name">김상명</span> / <span class="order-num">010-0000-0000</span> <br>*주문자 정보로 결제 관련 정보가 제공됩니다.</td>
               </tr>
               <tr>
                 <td><b>받는분</b></td>
-                <td><span class="order-name">Eric</span> / <span class="order-num">010-0000-0000</span><button type="button" class="safe-num"> (안심번호 사용하기)</button></td>
+                <td><span class="order-name">김상명</span> / <span class="order-num">010-0000-0000</span><button type="button" class="safe-num"> (안심번호 사용하기)</button></td>
               </tr>
               <tr>
                 <td><b>주소</b></td>
-                <td>[주소] 충청남도 천안시 동남구 신부동 321-5, 302호</td>
+{#                  이성원 주소 바꿧음#}
+                <td>[주소] 상명대학교 천안캠퍼스 한누리관 805호</td>
               </tr>
               <tr>
                 <td><b>점포배송 요청</b></td>
@@ -77,40 +97,44 @@
             </div>
                 <div class="button-select-container">
                 <div class="payment-buttons">
-                <button type="button" id="benefit">신용카드</button>
-                <button type="button" id="none">카카오페이</button>
-                <button type="button" id="none">네이버페이</button>
-                <button type="button" id="none">토스</button>
-                <button type="button" id="none">페이코</button>
+                <button type="button" id="benefit" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top"
+                   data-bs-content="신용카드를 선택하고 할인혜택등을 확인한 후 결제카드를 선택해주세요." onclick="benefit()">신용카드</button>
+                <button type="button" id="none" onclick="none()" disabled>카카오페이</button>
+                <button type="button" id="none" onclick="none()" disabled>네이버페이</button>
+                <button type="button" id="none" onclick="none()" disabled>토스</button>
+                <button type="button" id="none" onclick="none()" disabled>페이코</button>
                 </div>
-                <div class="card-select">
-                <select>
-                    <option>카드를 선택하세요</option>
-                    <option>스페셜 신한카드</option>
-                    <option>신한카드</option>
-                    <option>KB국민카드</option>
-                    <option>BC카드</option>
-                    <option>현대카드</option>
-                    <option>삼성카드</option>
-                    <option>롯데카드</option>
-                    <option>하나카드</option>
-                    <option>카카오뱅크카드</option>
-                    <option>우리카드</option>
-                    <option>씨티카드</option>
-                    <option>NH카드</option>
-                    <option>우체국체크카드</option>
-                    <option>제주카드</option>
-                    <option>수협카드</option>
-                    <option>전북카드</option>
-                    <option>광주카드</option>
-                    <option>케이뱅크카드</option>
-                    <option>MG새마을금고카드</option>
-                    <option>저축은행카드</option>
+                <div class="card-select" >
+                <select id="discount">
+{#                    이성원( value="3000", value="0" )#}
+                    <option value="0">카드를 선택하세요</option>
+                    <option value="3000">스페셜 신한카드</option>
+                    <option value="3000">신한카드</option>
+                    <option value="3000">KB국민카드</option>
+                    <option value="3000">BC카드</option>
+                    <option value="3000">현대카드</option>
+                    <option value="3000">삼성카드</option>
+                    <option value="3000">롯데카드</option>
+                    <option value="3000">하나카드</option>
+                    <option value="3000">카카오뱅크카드</option>
+                    <option value="3000">우리카드</option>
+                    <option value="3000">씨티카드</option>
+                    <option value="3000">NH카드</option>
+                    <option value="3000">우체국체크카드</option>
+                    <option value="3000">제주카드</option>
+                    <option value="3000">수협카드</option>
+                    <option value="3000">전북카드</option>
+                    <option value="3000">광주카드</option>
+                    <option value="3000">케이뱅크카드</option>
+                    <option value="3000">MG새마을금고카드</option>
+                    <option value="3000">저축은행카드</option>
                 </select>
                 <span>일시불</span>
                 </div>
             </div>
         </div>
+
+
 
         <!-- 신용카드 클릭시 이거 나오게 할 예정 -->
         <div class="discount-card-container">
@@ -118,14 +142,25 @@
             <p>카드즉시할인</p>
           </div>
               <div class="buttons-select-container">
-                  <li class="card-discount-item">광주카드결제 시 -3000원</li>
-                  <li class="card-discount-item">전북카드결제 시 -3000원</li>
-                  <li class="card-discount-item">롯데카드결제 시 -3000원</li>
-                  <li class="card-discount-item">하나카드결제 시 -3000원</li>
-                  <li class="card-discount-item">우리카드결제 시 -3000원</li>
-                  <li class="card-discount-item">KB국민카드결제 시 -3000원</li>
-                  <li class="card-discount-item">삼성카드결제 시 -3000원</li>
-                  <li class="card-discount-item">스페셜신한카드/ 신한카드결제 시 -3000원</li>
+
+                    <li class="card-discount-item">KB국민카드 시 -3000원</li>
+                    <li class="card-discount-item">BC카드 시 -3000원</li>
+                    <li class="card-discount-item">현대카드 시 -3000원</li>
+                    <li class="card-discount-item">삼성카드 시 -3000원</li>
+                    <li class="card-discount-item">롯데카드 시 -3000원</li>
+                    <li class="card-discount-item">하나카드 시 -3000원</li>
+                    <li class="card-discount-item">카카오뱅크카드 시 -3000원</li>
+                    <li class="card-discount-item">우리카드 시 -3000원</li>
+                    <li class="card-discount-item">씨티카드 시 -3000원</li>
+                    <li class="card-discount-item">NH카드 시 -3000원</li>
+                    <li class="card-discount-item">우체국체크카드 시 -3000원</li>
+                    <li class="card-discount-item">제주카드 시 -3000원</li>
+                    <li class="card-discount-item">수협카드 시 -3000원</li>
+                    <li class="card-discount-item">전북카드 시 -3000원</li>
+                    <li class="card-discount-item">광주카드 시 -3000원</li>
+                    <li class="card-discount-item">케이뱅크카드 시 -3000원</li>
+                    <li class="card-discount-item">MG새마을금고카드 시 -3000원</li>
+                    <li class="card-discount-item">저축은행카드 시 -3000원</li>
                 <div class="discount-info-container">
                   <ul>
                     <li class="discount-info">카드즉시할인 적용시 해당 카드로만 결제 가능합니다.</li>
@@ -153,7 +188,7 @@
             <div class="right-total-price-container">
               <span id="more-bold">총 주문금액</span>
               <div class="right-total-price">
-                <span class="right-total" id="more-bold">{{ product.price }}</span><span> 원</span>
+                <span class="right-total" id="more-bold">{{ product.price|intcomma }}</span><span> 원</span>
               </div>
             </div>
           </div>
@@ -162,7 +197,7 @@
             <div class="right-totalbox-price-container">
               <span>점포배송(<span class="num">1</span><span>건)</span></span>
               <div class="right-totlabox-price">
-                <span class="right-total">{{ product.price }}<span> 원</span></span>
+                <span class="right-total">{{ product.price|intcomma }}<span> 원</span></span>
               </div>
             </div>
           </div>
@@ -171,7 +206,8 @@
             <div class="right-discount-price-container">
               <span>할인금액</span>
               <div class="right-discount-price">
-                <span class="right-account" id="more-bold">0</span><span> 원</span>
+{#                  이성원(id more-bold --> more-bold-discount)#}
+                <span class="right-account" id="more-bold-discount">0</span><span> 원</span>
               </div>
             </div>
           </div>          
@@ -181,7 +217,7 @@
           <div class="right-deliver-price-container">
             <span>배송비</span>
             <div class="right-deliver-price">
-              <span class="right-deliver" id="more-bold">{{ product.delivery }}</span><span> 원</span>
+              <span class="right-deliver" id="more-bold">{{ product.delivery|intcomma }}</span><span> 원</span>
             </div>
           </div>
         </div>
@@ -190,18 +226,25 @@
           <div class="right-deliverbox-price-container">
             <span>배송비</span>
             <div class="right-deliverbox-price">
-              <span class="right-deliverbox">{{ product.delivery }} 원</span>
+              <span class="right-deliverbox">{{ product.delivery|intcomma }} 원</span>
             </div>
           </div>
         </div>
+
 
       <div class="pay-befo-container">
         <div class="pay-accum-container">
           <span>최종 결제예정금액</span>
           <p class="accum-point">포인트 적립: 결제 금액의 10%</p>
         </div>
-        <div class="pay-befo-price-container">
-          <span class="right-total" style="color: red; font-size: x-large;">{{ product.price|add:product.delivery }}</span><sub style="font-size: large;">원</sub>
+
+{#                     id추가함#}
+        <div class="pay-befo-price-container" id="send">
+          <span class="right-total" id="right-total" style="color: red; font-size: x-large;">{{ product.price|add:product.delivery|intcomma }}</span>
+{#            이성원#}
+          <span class="total" id="discount-total" style="color: red; font-size: x-large; display: none;">{{ product.price|add:product.delivery|sub:3000|intcomma }}</span>
+
+            <sub style="font-size: large;">원</sub>
       </div>
       </div>
       <div class="collect-agree-container">
@@ -210,21 +253,41 @@
         </p>
       </div>
 
+{#원본#}
       <div class="payment-button">
-        <button type="button" onclick="location.href='/mypage/{{ product.pk }}'">결제하기</button>
+        <button type="button" onclick="alert('결제가 완료되었습니다. 마이페이지로 이동합니다.')
+                ,location.href='/mypage/{{ product.pk }}'"
+        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top"
+        data-bs-content="이곳을 눌러 결제를 진행해주세요." id="payPopover" disabled>결제하기</button>
       </div>
 
     </div>
         </div>
+
       </div> <!-- payment container-->
 
 
+{#            이성원#}
+        <script src="{% static 'helpyou/js/payment.js' %}"></script>
+
+
+
+    <script>
+    3000
+
+
+
+    </script>
+
 
     {% endblock %}
+
+
     <!-- 기능적인 자바스크립트 코드 수정 예정 -->
     <script>
       function moveToPaymentFinishPage() {
         window.location.href = "payment.html";
       }
+
     </script>
 

@@ -5,18 +5,27 @@ html, body, h1, h2, h3, h4, h5, h6, div, p, header, main, video, audio, footer, 
 }
 
 
+.container-fluid{
 
+
+}
+
+.space {
+    margin-bottom: 80px;
+}
 
 .container {
-    width: 1200px;
+
     margin: 0px auto;
-    padding: 60px 0px 100px;
+
+    box-sizing: border-box; /* container에만 적용 */
+
 }
-.container::after {
-    content: "";
-    display: block;
-    clear: both;
-}
+
+
+
+
+
 /* 사이드 */
 .side{
     float: left;
@@ -35,9 +44,7 @@ ul, ol, li {
 }
 
 .list{
-    padding-bottom: 40px;
-    margin-bottom: 13px;
-    border-bottom: 1px solid rgb(221, 221, 221);
+
 }
 
 .list_in{
@@ -52,6 +59,7 @@ ul, ol, li {
     text-decoration: none;
 }
 
+
 /* 메인 회원 정보*/
 .main{
     float: left;
@@ -62,12 +70,16 @@ ul, ol, li {
     content: "";
     display: block;
     clear: both;
+    box-sizing: border-box;
 }
+
 
 .mem_info{
     float: left;
     width: 315px
 }
+
+
 .grade{
     float: left;
     width: 50px;
@@ -103,7 +115,7 @@ ul, ol, li {
     border-left: 1px solid rgb(238, 238, 238);
   }
 
-/* 메인 주문 정보 */
+/*!* 메인 주문 정보 *!*/
 .user_timelineBox {
     position: relative;
     margin-top: 80px;
@@ -126,6 +138,7 @@ ul, ol, li {
     padding-bottom: 20px;
 }
 
+/*결제완료*/
 .orderSummaryBox {
     height: 112px;
     background: rgb(255, 255, 255);
@@ -169,7 +182,7 @@ ul, ol, li {
 
 /* 날짜 */
 .date{
-    width: 100%;
+    width: 150%;
     padding: 30px;
     border-radius: 3px;
     background-color: rgb(249, 250, 251);
@@ -200,7 +213,7 @@ ul, ol, li {
 
 .tilde{
     margin: 0px 15px;
-    font-size: larger;  
+    font-size: larger;
 }
 .month_btn{
     width: 80px;
@@ -244,12 +257,12 @@ button{
     display: inline-block;
 }
 
-  
+
 .order_wrap img {
     vertical-align: middle; /* 이미지와 인라인 요소의 수직 정렬 */
     padding: 0 30px 0 0;
 }
-  
+
 .info {
     display: inline-block;
     vertical-align: middle; /* 인라인 요소들의 수직 정렬 */

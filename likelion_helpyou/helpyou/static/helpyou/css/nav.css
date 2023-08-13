@@ -1,3 +1,8 @@
+/*//태훈*/
+span {
+  color: #000000; /* 비활성화된 버튼의 글씨 색상을 검은색으로 지정 */
+}
+
 .container{
     display: flex;
 }
@@ -62,4 +67,8 @@
     .navbar-brand img {
         width: 150px; /* 로고 이미지의 크기를 줄임 */
     }
+}
+
+.dropdown-menu{
+    display: none;
 }

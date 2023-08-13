@@ -3,14 +3,14 @@
     width: 100%;
     height: 400px;
     background: #ddd;
-    /* background: url(주소) no-repeat 50% 50% /cover;*/
+
     text-align: center;
 }
 /* 리스트  */
 .name h3 {
-    /* height: 50px; */
+
     font-size: 40px;
-    /* font-weight: 700; */
+
     width: 1180px;
     margin: 0 auto 80px;
     padding: 120px 0 0;
@@ -94,3 +94,4 @@ a.click {
     line-height: 1.13;
     color: red;
 }
+

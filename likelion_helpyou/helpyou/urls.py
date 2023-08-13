@@ -8,9 +8,12 @@ from django.conf.urls.static import static
 app_name='helpyou'
 
 urlpatterns = [
-    path('', views.Index.as_view()),  # 첫 화면(메인페이지)
-    #path('signup/', views.signup, name='signup'),
-    path('login/', auth_views.LoginView.as_view(template_name='helpyou/login.html'), name='login'), # 로그인
+    path('', views.Index.as_view(), name='index'),  # 첫 화면(메인페이지)
+    path('signup/', views.signup, name='signup'), # 회원가입
+    path('check_duplicate_id/', views.check_duplicate_id, name='check_duplicate_id'), # 아이디 중복확인
+    path('login/', views.login, name='login'), # 로그인
+    # path('logout/', views.logout, name='login'), # 로그아웃
+    #path('login/', auth_views.LoginView.as_view(template_name='helpyou/login.html'), name='login'), # 로그인
     path('logout/', auth_views.LogoutView.as_view(), name='logout'), # 로그아웃
     path('category/<str:slug1>/<str:slug2>/', views.Category.as_view()),  # 카테고리/과일/사과
     path('category/<str:categorybig>/<str:categorysmall>/<int:pk>/', views.ProductDetail.as_view()), # 상세상품 #카테고리/사과/과일/pk번호

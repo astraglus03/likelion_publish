@@ -186,6 +186,12 @@
 #more-bold {
   font-weight: bold;
 }
+/*이성원*/
+#more-bold-discount {
+  font-weight: bold;
+}
+
+
 .pay-befo-container {
   display: flex;
   flex-direction: column;

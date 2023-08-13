@@ -1,5 +1,6 @@
-{% extends 'helpyou/base.html' %}
+{% include 'helpyou/nav.html' %}
 {%  load static %}
+{% load humanize %}
 
 
     {% block css_area %}
@@ -21,151 +22,34 @@
                     {% for p in product_list %}
                         <li>
                             <div class="img_wrap">
-                                <span>
-                                    <img src="{{ p.main_image.url }}" alt="{{ p.name }}" width="270px" height="270px">
-                                </span>
+                                <button class="img_button" onclick="retrun false;" style="background: url('{{ p.main_image.url }}') no-repeat; background-size: cover; width: 270px; height: 270px; border: none; cursor: pointer;">
+{#                                    <img src="{{ p.main_image.url }}" alt="{{ p.name }}" width="270px" height="270px">#}
+                                </button>
                             </div>
                             <div class="item_info">
-            {#                    <a class="click" href="categorydetail.html">#}
+                                <a class="click" href="categorydetail.html">
                                     <div class="space1"></div>
                                     <span class="name">
                                         {{ p.name }}
                                     </span>
-            {#                    </a>#}
+                                </a>
                                 <div class="space2">
                                     <span class="price">
-                                        {{ p.price }}원
+                                        {{ p.price|intcomma }}원
                                     </span>
                                     <span class="price_detail">
-                                        (1{{ p.unit }} 당 {{ p.price }}원)
+                                        (1{{ p.unit }} 당 {{ p.price|intcomma }}원)
                                     </span>
                                 </div>
                             </div>
                         </li>
                     {% endfor %}
             {% endif %}
+        <script src="{% static 'helpyou/js/index.js' %}"></script>
 
-
-{#            <li>#}
-{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
-{#                <div class="item_info">#}
-{#                        <div class="space1"></div>#}
-{#                        <span class="name">#}
-{#                            개 맛도리 사과 6~8입(봉)#}
-{#                        </span>#}
-{#                    <div class="space2">#}
-{#                        <span class="price">#}
-{#                            11,900원#}
-{#                        </span>#}
-{#                        <span class="price_detail">#}
-{#                            (1BAG 당 7,990원)#}
-{#                        </span>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </li>#}
-{#            <li>#}
-{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
-{#                <div class="item_info">#}
-{#                        <div class="space1"></div>#}
-{#                        <span class="name">#}
-{#                            개 맛도리 사과 6~8입(봉)#}
-{#                        </span>#}
-{#                    <div class="space2">#}
-{#                        <span class="price">#}
-{#                            11,900원#}
-{#                        </span>#}
-{#                        <span class="price_detail">#}
-{#                            (1BAG 당 7,990원)#}
-{#                        </span>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </li>#}
-{#            <li>#}
-{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
-{#                <div class="item_info">#}
-{#                        <div class="space1"></div>#}
-{#                        <span class="name">#}
-{#                            개 맛도리 사과 6~8입(봉)#}
-{#                        </span>#}
-{#                    <div class="space2">#}
-{#                        <span class="price">#}
-{#                            11,900원#}
-{#                        </span>#}
-{#                        <span class="price_detail">#}
-{#                            (1BAG 당 7,990원)#}
-{#                        </span>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </li>#}
-{#            <li>#}
-{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
-{#                <div class="item_info">#}
-{#                        <div class="space1"></div>#}
-{#                        <span class="name">#}
-{#                            개 맛도리 사과 6~8입(봉)#}
-{#                        </span>#}
-{#                    <div class="space2">#}
-{#                        <span class="price">#}
-{#                            11,900원#}
-{#                        </span>#}
-{#                        <span class="price_detail">#}
-{#                            (1BAG 당 7,990원)#}
-{#                        </span>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </li>#}
-{#            <li>#}
-{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
-{#                <div class="item_info">#}
-{#                        <div class="space1"></div>#}
-{#                        <span class="name">#}
-{#                            개 맛도리 사과 6~8입(봉)#}
-{#                        </span>#}
-{#                    <div class="space2">#}
-{#                        <span class="price">#}
-{#                            11,900원#}
-{#                        </span>#}
-{#                        <span class="price_detail">#}
-{#                            (1BAG 당 7,990원)#}
-{#                        </span>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </li>#}
-{#            <li>#}
-{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
-{#                <div class="item_info">#}
-{#                        <div class="space1"></div>#}
-{#                        <span class="name">#}
-{#                            개 맛도리 사과 6~8입(봉)#}
-{#                        </span>#}
-{#                    <div class="space2">#}
-{#                        <span class="price">#}
-{#                            11,900원#}
-{#                        </span>#}
-{#                        <span class="price_detail">#}
-{#                            (1BAG 당 7,990원)#}
-{#                        </span>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </li>#}
-{#            <li>#}
-{#                <img src="https://dummyimage.com/270x270/000/fff" alt="개 맛도리 사과">#}
-{#                <div class="item_info">#}
-{#                        <div class="space1"></div>#}
-{#                        <span class="name">#}
-{#                            개 맛도리 사과 6~8입(봉)#}
-{#                        </span>#}
-{#                    <div class="space2">#}
-{#                        <span class="price">#}
-{#                            11,900원#}
-{#                        </span>#}
-{#                        <span class="price_detail">#}
-{#                            (1BAG 당 7,990원)#}
-{#                        </span>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </li>#}
         </div>
 
 
     {% endblock %}
+
+{%  include 'helpyou/footer.html' %}

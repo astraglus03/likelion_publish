@@ -1,22 +1,17 @@
 # context를 넣어서 보내는 건 views.py!
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .models import CategoryBig,CategorySmall, Product,  Payment
-#from .forms import SignupForm
+import bcrypt
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, TemplateView
+#from .forms import SignupForm
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.core.exceptions import PermissionDenied
-#from .forms import CommentForm
-from django.shortcuts import get_object_or_404  # db에서 하나만 가져오는 명령어
-from django.db.models import Q
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib import auth
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 
-# # index 페이지 (첫 화면)
-# def index(request):
-#     return render(
-#         request,
-#         'helpyou/index.html',
-#     )
+
 # 인덱스 페이지 (첫 화면)
 class Index(ListView):
     model = Product
@@ -53,43 +48,48 @@ class Index(ListView):
 
             }
         )
+# -------------------------- 종혜: 아이디 중복확인까지 코드 추가 ----------------------------------
+def signup(request):
+    if request.method == 'POST':
+        if User.objects.filter(username=request.POST['username']).exists():
+            error_message1 = '이미 사용중인 아이디입니다 아이디를 확인하고 로그인 해주세요.'
+            return render(request, 'helpyou/signup.html',{'error_message1': error_message1})
+        #현아 추가 : 아이디 중복되었으면 오류나지 않고 다시 회원가입 페이지로 돌아갈 수 있도록 함
+        if request.POST['password1'] == request.POST['password2']:
+            user = User.objects.create_user(
+                                            username=request.POST['username'],
+                                            password=request.POST['password1'],
+                                            email=request.POST['email'],)
+            return redirect('/login') #현아 수정 : 회원가입하고 메인페이지로 이동하면 로그인,회원가입 버튼 뜨는것이 아니라 바로 로그아웃, 반갑습니다 가 뜸
+        #회원가입 성공하면 바로 로그인 페이지로 이동할 수 있게 수정함
 
+        return render(request, 'helpyou/signup.html')
+    return render(request, 'helpyou/signup.html')
 
-# # 회원가입
-# def signup(request):
-#     if request.method == "POST":
-#         form = SignupForm(request.POST)
-#         if form.is_valid(): # 회원가입 필드값이 모두 입력되었는지, 비번1,2가 같은지, 등을 검사
-#             form.save()
-#             # username = form.cleaned_data.get('username')
-#             # raw_password = form.cleaned_data.get('password1')
-#             # #username = form.cleaned_data.get('username')
-#             # user = authenticate(username=username, password=raw_password) #사용자 인증
-#             # login(request, user) #로그인
-#             return redirect("/login/")
-#     else:
-#         form = SignupForm()
-#         return render(request, 'helpyou/signup.html', {'form':form})
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('/')
+        else:
+            error_message = '아이디나 비밀번호가 다릅니다.'
+            return render(request, 'helpyou/login.html', {'error_message': error_message})
+    else:
+        return render(request, 'helpyou/login.html')
 
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
 
+def check_duplicate_id(request):
+    user_id = request.GET.get('id')
+    exists = User.objects.filter(username=user_id).exists()
+    return JsonResponse({'exists': exists})
 
-# # 회원가입
-# class Signup(ListView):
-#     model = SignUp
-#
-#     template_name = 'helpyou/signup.html'
-#     # 1.내가 이름을 바꿔서 지정하거나, 자동으로 연결되는 이름으로 다른 걸 바꾸던가(우린 후자)
-#     #template_name = 'blog/post_list.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(Signup, self).get_context_data()  # lecture_list를 가져옴 # 상위에서 가져오기때문
-#         context['categoriesbig'] = CategoryBig.objects.all()  # CategoryBig DB의 내용
-#         context['categoriessmall'] = CategorySmall.objects.all()  # CategorySmall DB의 내용
-#         #context['no_category_post_count'] = Lecture.objects.filter(
-#             #category=None).count()  # category가 없을 수 있기 때문에 no_category이고, 뒤에는 없는 것 카운트
-#         return context  # => 리턴은 lecture_list.html로 들어가게 된다.
-#
-# class Login():
+# --------------------------------------- 여기까지 -----------------------------------
 
 # 상품 (상품 detail)
 class ProductDetail(DetailView):
@@ -193,3 +193,5 @@ class MyPage(DetailView):
         context['categoriesbig'] = CategoryBig.objects.all()  # CategoryBig DB의 내용
         context['categoriessmall'] = CategorySmall.objects.all()  # CategoryBig DB의 내용
         return context
+
+

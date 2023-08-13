@@ -1,16 +1,18 @@
 {% extends 'helpyou/base.html' %}
 {% load static %}
 {% load mathfilters %}
+{% load humanize %}
 
     {% block css_area %}
       <link href="{% static 'helpyou/css/mypage.css' %}" rel="stylesheet" type="text/css">
-        <script defer src ="{% static 'helpyou/js/mypage.js' %}"></script>
+
     {% endblock %}
 
 
     {% block main_area %}
 
     <!-- 전체 틀 -->
+        <div class="space"></div>
     <div class="container">
       <!-- 사이드 -->
       <div class="side">
@@ -19,7 +21,11 @@
           <h2>주문정보</h2>
           <ul class="list_in">
             <li>
-              <a href="#" onclick="showOrderInfo()"> 주문/배송 조회 </a>
+                <a href="#" onclick="showOrderInfo()"
+              id="mypagePopover"
+              data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
+              data-bs-content="이곳을 눌러 주문 정보를 확인해요."
+              > 주문/배송 조회 </a>
             </li>
             <li>
               취소/반품/교환 조회
@@ -77,7 +83,7 @@
               /><!-- 등급 이미지 -->
             </div>
             <div class="mem_detail">
-              <strong>홍길동님</strong>
+              <strong>김상명 님</strong>
             </div>
           </div>
           <ul class="benefit">
@@ -129,6 +135,7 @@
                 <em>취소/반품/교환</em>
                 <a>0</a>
               </li>
+
             </ul>
           </div>
         </div>
@@ -144,6 +151,7 @@
               </div>
             </div>
 
+{#              이성원(input id past랑 current로 바꾸고 value 비웟음#}
             <div class="date">
               <div class="date_wrap">
                 <div class="time">
@@ -151,7 +159,7 @@
                   <div class="filterInputWrap">
                     <div class="calendar_wrap">
                       <div class="calendar">
-                        <input type="date" value="2023-07-04" />
+                        <input type="date" id="past" value="" />
                       </div>
                     </div>
                   </div>
@@ -159,7 +167,7 @@
                   <div class="filterInputWrap">
                     <div class="calendar_wrap">
                       <div class="calendar">
-                        <input type="date" value="2023-08-04" />
+                        <input type="date" id="current" value=""/>
                       </div>
                     </div>
                   </div>
@@ -185,6 +193,8 @@
               </div>
             </div>
 
+
+
             <div class="complete">
               <h3 id="current_date"></h3>
               <div class="order_wrap">
@@ -194,7 +204,9 @@
                     <div class="ok">결제 완료</div>
                     <div class="date2" id="current_date2"></div>
                   </div>
-                  <div class="price">{{ product.price|add:product.delivery }}원</div>
+{#                    원본#}
+                <div class="price">{{ product.price|intcomma }}원</div>
+                  <div class="price" id="receive"></div>
                   <div class="name">{{ product.name }}</div>
                 </div>
               </div>
@@ -203,19 +215,80 @@
         </div>
       </div>
     </div>
-        <!-- js 추가 -->
+        <!-- js 추가 이성원 -->
+
+        <script>
+
+
+  // jQuery 코드 수정
+  jQuery(document).ready(function($) {
+    var mypagePopover = $("#mypagePopover");
+    var popover1 = new bootstrap.Popover(mypagePopover);
+
+    popover1.show();
+
+    mypagePopover.click(function() {
+        popover1.hide();
+    });
+  });
+
+
+
+function showOrderInfo() {
+    document.getElementById("mainContent").style.display = "none";
+    document.getElementById("orderInfo").style.display = "block";
+  }
+
+  date = new Date();
+  year = date.getFullYear();
+  month = date.getMonth() + 1;
+  day = date.getDate();
+  document.getElementById("current_date").innerHTML = year + "." + month + "." + day;
+  document.getElementById("current_date2").innerHTML = month + "/" + day;
+
+
+            function getCurrentDate() {
+                const current = new Date();
+                const year = current.getFullYear();
+                const month = String(current.getMonth() + 1).padStart(2, '0');
+                const day = String(current.getDate()).padStart(2, '0');
+                const formattedDate = `${year}-${month}-${day}`;
+                document.getElementById('current').value = formattedDate;
+
+                const oneMonthAgo = new Date(current);
+                oneMonthAgo.setMonth(current.getMonth() - 1);
+                const oneMonthAgoYear = oneMonthAgo.getFullYear();
+                const oneMonthAgoMonth = String(oneMonthAgo.getMonth() + 1).padStart(2, '0');
+                const oneMonthAgoDay = String(oneMonthAgo.getDate()).padStart(2, '0');
+                const formattedOneMonthAgo = `${oneMonthAgoYear}-${oneMonthAgoMonth}-${oneMonthAgoDay}`;
+                document.getElementById('past').value = formattedOneMonthAgo;
+            }
+
+            getCurrentDate();
+
+            function showOrderInfo() {
+    document.getElementById("mainContent").style.display = "none";
+    document.getElementById("orderInfo").style.display = "block";
+    setTimeout(function() {
+    alert("체험이 끝났습니다. 이용해주셔서 감사합니다.");
+  }, 1000);
+  }
+
+
+
+
+
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var selectedText = urlParams.get('selectedText');
+
+        if (selectedText) {
+            document.write("선택한 가격: " + selectedText);
+        } else {
+            document.write('기본 선택지입니다.');
+        }
+
+        </script>
+
     {% endblock %}
-{#    <script src="helpyou/mypage.js"></script>#}
-{#<script>#}
-{#    function showOrderInfo() {#}
-{#    document.getElementById("mainContent").style.display = "none";#}
-{#    document.getElementById("orderInfo").style.display = "block";#}
-{#  }#}
-{##}
-{#  date = new Date();#}
-{#  year = date.getFullYear();#}
-{#  month = date.getMonth() + 1;#}
-{#  day = date.getDate();#}
-{#  document.getElementById("current_date").innerHTML = year + "." + month + "." + day;#}
-{#  document.getElementById("current_date2").innerHTML = month + "/" + day;#}
-{#</script>#}
+

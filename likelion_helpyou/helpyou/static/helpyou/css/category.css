@@ -11,18 +11,7 @@
 #largecate{
   font-size: 24px;
 }
-/* 중주제 글자크기*/
-.btn-toggle-nav {
-  font-size: 20px; 
-}
-/* 소주제 글자크기*/
-.btn-toggle-nav li a {
-  font-size: 16px; 
-}
 
-.btn-toggle:hover {
-  text-decoration: underline;
-}
 .link-dark{
   text-decoration: none;
 }
@@ -111,3 +100,15 @@
   line-height: 1;
   margin-bottom: 18px;
 }
+
+	#nav { font-family:'arial'; }
+	#nav ul{ width:100%; margin:0; padding:0; }
+	#nav ul.menu li{ position:relative; float:left; width:100%; list-style-type:none; font-size:24px;}
+	#nav ul.menu li button.toggle-button{ display:block; width:100%; height:100%; line-height:100px; text-indent:30px; color:#000; font-weight:bold; text-decoration:none; background: none; border: none; cursor: pointer; }
+	#nav ul.menu li button.toggle-button:hover{ background:#eee; }
+	#nav ul.menu li .sub button.sub-toggle-button{ position:relative; float:left; display:block; width:100%; z-index:999; background:white; cursor: pointer; }
+	#nav ul.menu li .sub button.sub-toggle-button:hover{ background:#444; color:#fff; }
+	#nav ul.menu li .sub ul.sub-sub a{ position:relative; float:left; display:block; width:100%; z-index:999; background:#ddd; cursor: pointer; padding-left: 30px; }
+	#nav ul.menu li .sub ul.sub-sub a:hover{ background:#333; color:#fff; }
+
+

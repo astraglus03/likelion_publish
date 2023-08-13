@@ -42,7 +42,7 @@
                               <!-- 드롭다운 토글 버튼 -->
                               <button class="btn btn-outline-success btn-lg dropdown-toggle" type="button"
                                       id="dropdownMenuButton1" data-toggle="dropdown"
-                                      aria-haspopup="true" aria-expanded="false" disabled>
+                                      aria-haspopup="true" aria-expanded="false">
                                 <span data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
                                   data-bs-content="이곳에 마우스를 올리고 '사과'를 눌러주세요." id="dropPopover1">과일<br>(Fruit)</span>
                               </button>
@@ -65,7 +65,7 @@
                               <!-- 드롭다운 토글 버튼 -->
                               <button class="btn btn-outline-success btn-lg dropdown-toggle" type="button"
                                       id="dropdownMenuButton2" data-toggle="dropdown"
-                                      aria-haspopup="true" aria-expanded="false" disabled>
+                                      aria-haspopup="true" aria-expanded="false">
                                 <span>쌀/잡곡<br>(Rice)</span>
                               </button>
                               <!-- 드롭다운 메뉴 -->
@@ -86,7 +86,7 @@
                             <div class="dropdown">
                               <!-- 드롭다운 토글 버튼 -->
                               <button class="btn btn-outline-success btn-lg dropdown-toggle" type="button" id="dropdownMenuButton3"
-                                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
+                                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span>정육/계란<br>(meat/Egg)</span>
                               </button>
                               <!-- 드롭다운 메뉴 -->
@@ -122,6 +122,10 @@
                                 <div>
                                     <button id="join1" class="btn btn-outline-success btn-lg mt-2" onclick="location.href='{% url 'helpyou:logout' %}'">로그아웃</button>
                                 </div>
+{#                            <form method=post action="{% url 'helpyou:logout' %}">#}
+{#                                {% csrf_token %}#}
+{#                                <input type="submit" value="로그아웃" class="btn btn-outline-success btn-lg">#}
+{#                            </form>#}
                             {% else %}
                              <script>
                                 var isLogin = false;
@@ -137,13 +141,13 @@
                                         type="submit" value="회원가입"  onclick="location.href='{% url 'helpyou:signup' %}'">회원가입</button>
                                 </div>
                              {% endif %}
-
                         </div>
                     </div>
-                    
+
                 </div>
             </nav>
             </div>
+
 <script>
     const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 
@@ -182,56 +186,6 @@ container.addEventListener('mouseleave', () => {
     hideDropdownMenu(menu);
   });
 });
-
-//페이지 로드시 실행
-$(document).ready(function() {
-//        var popCheck = 0;
-        //로그인 x
-        if(isLogin == false){
-            var RegPopover = $("#RegPopover");
-            var popover1 = new bootstrap.Popover(RegPopover);
-
-            var LogPopover = $("#LogPopover");
-            var popover2 = new bootstrap.Popover(LogPopover);
-
-            popover1.show(); // 페이지 로드 시 1번 팝오버 작동.
-            RegPopover.click(function() {
-                LogPopover.removeAttr("disabled");
-                popover1.hide();
-                popover2.show();
-                });
-        };
-
-
-        var DropPopover = $("#dropPopover1");
-        var popover3 = new bootstrap.Popover(DropPopover);
-
-
-
-
-        //로그인시 실행
-        if (isLogin){
-            $("#dropdownMenuButton1").removeAttr("disabled");
-            $("#dropdownMenuButton2").removeAttr("disabled");
-            $("#dropdownMenuButton3").removeAttr("disabled");
-            popover3.show();
-//            popCheck += 1;
-//            alert(popCheck);
-//            if (popCheck > 1){
-//                popover3.hide();
-//            };
-        };
-
-
-
-
-
-        // 드롭다운
-        $(document).on("click", function(event) {
-            $("#dropdownMenuButton1, #dropdownMenuButton2, #dropdownMenuButton3").attr("aria-expanded", "false");
-            $("#dropdownMenuButton1, #dropdownMenuButton2, #dropdownMenuButton3").next().removeClass("show");
-          });
-        });
 </script>
 
 </body>

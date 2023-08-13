@@ -1,10 +1,15 @@
 {% extends 'helpyou/base.html' %}
 {% load static %}
 {% load mathfilters %}
+{% load humanize %}
 
     {% block css_area %}
     <link href="{% static 'helpyou/css/product_detail.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'helpyou/css/category.css' %}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</head>
     {% endblock %}
 
 
@@ -20,304 +25,98 @@
 
         <div class="row">
             <div class="col-2">
-
-                <div class="flex-shrink-0 p-3 bg-white" id="category-title">
-                  <a
-            {#            href="Category.html"#}
-                    class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom"
-                  >
-                    <svg class="bi pe-none me-2" width="30" height="24">
-            {#              <use xlink:href="#" />#}
-                    </svg>
-                    <span class="fs-5 fw-semibold">카테고리</span>
-                  </a>
-                  <ul class="list-unstyled ps-0">
-                    <!-- 과일 대주제 -->
-                    <li class="mb-1">
-                      <button
-                        class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#home-collapse-fruit"
-                        aria-expanded="false"
-                        id="largecate"
-                      >
-                        과일
-                      </button>
-                      <div class="collapse" id="home-collapse-fruit">
-                        <ul
-                          class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4"
-                        >
-                          <!-- 중주제 -->
-                          <li>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-kookmin-subtopics"
-                                aria-expanded="false"
-                                id="sub-kookmin-subtopics"
-                              >
-                                사과
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-nh-subtopics"
-                                aria-expanded="false"
-                                id="sub-nh-subtopics"
-                              >
-                                감귤/만감류
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-woori-subtopics"
-                                aria-expanded="false"
-                                id="sub-woori-subtopics"
-                              >
-                                오렌지/자몽/레몬
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-hana-subtopics"
-                                aria-expanded="false"
-                                id="sub-hana-subtopics"
-                              >
-                                토마토
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-ibk-subtopics"
-                                aria-expanded="false"
-                                id="sub-ibk-subtopics"
-                              >
-                                수박/멜론/참외
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-shinhan-subtopics"
-                                aria-expanded="false"
-                                id="sub-shinhan-subtopics"
-                              >
-                                포도
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-sc-subtopics"
-                                aria-expanded="false"
-                                id="sub-sc-subtopics"
-                              >
-                                딸기
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-keb-subtopics"
-                                aria-expanded="false"
-                                id="sub-keb-subtopics"
-                              >
-                                과일세트/바구니
-                              </button>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
+<div class="flex-shrink-0 p-3 bg-white" id="category-title">
+          <a
+{#            href="Category.html"#}
+            class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom"
+          >
+            <svg class="bi pe-none me-2" width="30" height="24">
+{#              <use xlink:href="#" />#}
+            </svg>
+            <span class="fs-5 fw-semibold">카테고리</span>
+          </a>
+          <ul class="list-unstyled ps-0">
+        	<div id="nav">
+		<ul class="menu">
+			<li>
+				<button class="toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">과일</button>
+				<ul class="sub">
+					<li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">사과</button>
+					</li>
+					<li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">감귤/만감류</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">오렌지/자몽/레몬</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">토마토</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">메론/참외</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">포도</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">딸기</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">과일세트/바구니</button>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<button class="toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">쌀/잡곡</button>
+				<ul class="sub">
+					<li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">백미</button>
+					<li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">찹쌀</button>
+					</li>
+					<li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">현미/흑미</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">혼합곡</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">수입잡곡</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">수수/조/깨</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">콩/팥</button>
+					</li>
+                    <li>
+                        <button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">보리/귀리</button>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<button class="toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">정육/계란</button>
+				<ul class="sub">
+					<li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">돼지고기</button>
+					</li>
+					<li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">소고기</button>
+					</li>
+					<li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">닭고기</button>
+					</li>
+                    <li>
+						<button class="sub-toggle-button btn-toggle d-inline-flex align-items-center rounded border-0">계란</button>
                     </li>
-                    <!-- 쌀 대주제 -->
-                    <li class="mb-1">
-                      <button
-                        class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#home-collapse-rice"
-                        aria-expanded="false"
-                        id="largecate"
-                      >
-                        쌀/잡곡
-                      </button>
-                      <div class="collapse" id="home-collapse-rice">
-                        <ul
-                          class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4"
-                        >
-                          <!-- 중주제 -->
-                          <li>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-kookmin-subtopics"
-                                aria-expanded="false"
-                                id="sub-kookmin-subtopics"
-                              >
-                                백미
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-nh-subtopics"
-                                aria-expanded="false"
-                                id="sub-nh-subtopics"
-                              >
-                                찹쌀
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-woori-subtopics"
-                                aria-expanded="false"
-                                id="sub-woori-subtopics"
-                              >
-                                현미/흑미
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-hana-subtopics"
-                                aria-expanded="false"
-                                id="sub-hana-subtopics"
-                              >
-                                혼합곡
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-ibk-subtopics"
-                                aria-expanded="false"
-                                id="sub-ibk-subtopics"
-                              >
-                                수입잡곡
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-shinhan-subtopics"
-                                aria-expanded="false"
-                                id="sub-shinhan-subtopics"
-                              >
-                                수수/조/깨
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-sc-subtopics"
-                                aria-expanded="false"
-                                id="sub-sc-subtopics"
-                              >
-                                콩/팥
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-keb-subtopics"
-                                aria-expanded="false"
-                                id="sub-keb-subtopics"
-                              >
-                                보리/귀리
-                              </button>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                    <!-- 정육 대주제 -->
-                    <li class="mb-1">
-                      <button
-                        class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#home-collapse-meat"
-                        aria-expanded="false"
-                        id="largecate"
-                      >
-                        정육/계란
-                      </button>
-                      <div class="collapse" id="home-collapse-meat">
-                        <ul
-                          class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4"
-                        >
-                          <!-- 중주제 -->
-                          <li>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-kookmin-subtopics"
-                                aria-expanded="false"
-                                id="sub-kookmin-subtopics"
-                              >
-                                돼지고기
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-nh-subtopics"
-                                aria-expanded="false"
-                                id="sub-nh-subtopics"
-                              >
-                                소고기
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-woori-subtopics"
-                                aria-expanded="false"
-                                id="sub-woori-subtopics"
-                              >
-                                닭고기
-                              </button>
-                            </div>
-                            <div>
-                              <button
-                                class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#sub-hana-subtopics"
-                                aria-expanded="false"
-                                id="sub-hana-subtopics"
-                              >
-                                계란
-                              </button>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-            </div>
+                </ul>
+			</li>
+		</ul>
+	</div>
+          </ul>
+</div>
+      </div>
 
             <div class="col-5" id="product-image">
 
@@ -335,11 +134,14 @@
             <div class="col-5" id="product-col-5">
                 
                 <!-- 초록사과5~8입은 제목임 장고에서 title로 가져오면 될듯 -->
-                <div class="title"> {{ product.name }} <button type="button" class="sale-button">3000원 카드할인 </button></div>
+                <div class="title"> {{ product.name }} <button type="button" class="sale-button"
+                  data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
+                  data-bs-content="스크롤을 아래로 내려 상품 정보를 확인하고 장바구니에 담아주세요." id="Guide"
+                >3000원 카드할인 </button></div>
                 <div class="origin" style="margin-bottom: 30px;">원산지: 국산</div>
-                <div class="price-container"><div class="original-price">판매가:</div> <div class="price">{{ product.price }}원</div> (1{{ product.unit }}당
-                    {{ product.price }}원)</div>                                           <!--판매가-카드할인가 연산-->
-                <div class="sale-price-container"><div class="sale-price">카드할인가:</div> <div class="card-price">{{ product.price|sub:product.card }}원</div> (1{{ product.unit }}당 {{ product.price|sub:3000 }}원)</div>
+                <div class="price-container"><div class="original-price">판매가:</div> <div class="price">{{ product.price|intcomma }}원</div> (1{{ product.unit }}당
+                    {{ product.price|intcomma }}원)</div>                                           <!--판매가-카드할인가 연산-->
+                <div class="sale-price-container"><div class="sale-price">카드할인가:</div> <div class="card-price">{{ product.price|sub:product.card|intcomma }}원</div> (1{{ product.unit }}당 {{ product.price|sub:3000|intcomma }}원)</div>
                 
                 <div class="row" id="advan">
                     <div class="col-3">
@@ -371,7 +173,7 @@
                             <div class="market">천안점</div>
                             <span class="order-date">지금 주문하면 내일 15시~17시 도착</span>
                             <div class="del-conatiner">
-                                <span class="del-price">{{ product.delivery }}원</span> <span class="free-del">(40,000원 이상 구매 시 무료배송)</span>
+                                <span class="del-price">{{ product.delivery|intcomma }}원</span> <span class="free-del">(40,000원 이상 구매 시 무료배송)</span>
                             </div>    
                         </div>
                     </div>
@@ -388,29 +190,60 @@
                             <button class="plus" type="button">+</button>
                         </div>
                         <div class="adjust-price">
-                            <span>{{ product.price }}원</span>
+                            <span>{{ product.price|intcomma }}원</span>
                         </div>
                     </div>
                 </div>
                     <div class="expected-price-container">
                         <div class="expected-price">
                             <span class="buy-expect">구매예정</span>
-                            <span class="total-expect">{{ product.price }}<span style="font-size: small; color: black;">원</span></span>
+                            <span class="total-expect">{{ product.price|intcomma }}<span style="font-size: small; color: black;">원</span></span>
                         </div>
                     </div>
-                    <div class="keep-cart-container">
+                    <div class="keep-cart-container" id="target">
                         <span>
-                            <button type="button" onclick="location.href='/cart/1'">장바구니</button>
+                            <button type="button" onclick="location.href='/cart/1'"
+                            id="payPopover"
+                            data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom"
+                            data-bs-content="이곳을 눌러 상품을 장바구니에 담아보세요."
+                            >장바구니</button>
                         </span>
-                    </div>
             </div>
         </div>
     </div>
 
-    {% endblock %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-{#    <script>#}
-{#        function moveToCartPage() {#}
-{#          window.location.href = "cart.html";#}
-{#        }#}
-{#      </script>#}
+        <script>
+        $(document).ready(function() {
+        var payPopover = $("#payPopover");
+        var popover1 = new bootstrap.Popover(payPopover);
+
+        var Guide = $("#Guide");
+        var popover2 = new bootstrap.Popover(Guide);
+
+        popover2.show();
+        popover1.show();
+        });
+
+
+		$(document).ready(function(){
+			$("#nav ul.sub, #nav ul.sub-sub").hide();
+			$("#nav ul.menu li button.toggle-button").click(function(){
+				$(this).siblings("ul.sub").slideToggle("fast");
+			});
+			$("#nav ul.menu li .sub button.sub-toggle-button").click(function(e){
+				e.stopPropagation();
+				$(this).siblings("ul.sub-sub").slideToggle("fast");
+			});
+		});
+
+                $(document).ready(function() {
+        var applePopover = $("#applePopover");
+        var popover1 = new bootstrap.Popover(applePopover);
+
+        popover1.show();
+        });
+        </script>
+    {% endblock %}

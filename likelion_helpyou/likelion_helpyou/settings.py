@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.humanize', # 1000단위로 , 찎어줌
     'mathfilters',#가격 연산할 때 필요. 추가
 
     "helpyou",
