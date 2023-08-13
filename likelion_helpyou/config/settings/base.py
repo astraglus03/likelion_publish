@@ -1,25 +1,29 @@
-
+import json
 from pathlib import Path
-
+from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+secret_file=BASE_DIR / 'secrets.json'
+with open(secret_file) as file:
+    secrets = json.loads(file.read())
+
+# secret key must not open
+def get_secret(setting,secrets_dict=secrets):
+    try:
+        return secrets_dict[setting]
+    except KeyError:
+        error_msg = f'Set the {setting} environment variable'
+        raise ImproperlyConfigured(error_msg)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-dppd$p4e4)7)ggx%9v!*d7ef$d+oh!q(stsz0)-!zera!cefes"
+SECRET_KEY = get_secret('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
-# Application definition
-
-INSTALLED_APPS = [
+DJANGO_APPS=[
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -27,10 +31,20 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'django.contrib.humanize', # 1000단위로 , 찎어줌
-    'mathfilters',#가격 연산할 때 필요. 추가
+]
 
+PROJECT_APPS=[
     "helpyou",
 ]
+
+THIRD_PARTY_APPS=[
+    'mathfilters',#가격 연산할 때 필요. 추가
+]
+
+
+
+# Application definition
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -43,7 +57,7 @@ MIDDLEWARE = [
 
 ]
 
-ROOT_URLCONF = "likelion_helpyou.urls"
+ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
     {
@@ -62,18 +76,13 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "likelion_helpyou.wsgi.application"
+WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+
 
 
 # Password validation
